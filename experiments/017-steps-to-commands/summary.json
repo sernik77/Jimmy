@@ -1,0 +1,288 @@
+{
+  "n_steps": 34,
+  "n_read_only": 30,
+  "SINGLE": {
+    "valid": 1.0,
+    "real": 0.853,
+    "exec_ok_among_RO": 0.647
+  },
+  "BESTOFN": {
+    "valid": 1.0,
+    "real": 1.0,
+    "exec_ok_among_RO": 0.962
+  },
+  "artifacts": [
+    {
+      "step": "'Verify environment type'",
+      "class": "read_only",
+      "cmd": "echo $(( EUID ))",
+      "valid": true,
+      "real": true,
+      "exec_ok": true
+    },
+    {
+      "step": "'identify if PostgreSQL already installed'",
+      "class": "read_only",
+      "cmd": "rpm -q postgresql",
+      "valid": true,
+      "real": true,
+      "exec_ok": true
+    },
+    {
+      "step": "'confirm no pre-existing DB'",
+      "class": "read_only",
+      "cmd": "echo \"No pre-existing DB\"",
+      "valid": true,
+      "real": true,
+      "exec_ok": true
+    },
+    {
+      "step": "'remove any pre-existing DB or PG installation'",
+      "class": "mutating",
+      "cmd": "apt remove postgresql* -y && apt remove postgres -y && apt purge postgres* -y && apt autoclean",
+      "valid": true,
+      "real": true,
+      "exec_ok": null
+    },
+    {
+      "step": "'Verify environment': check if running on Linux system",
+      "class": "read_only",
+      "cmd": "hostnamectl status | grep \"on Linux\"",
+      "valid": true,
+      "real": true,
+      "exec_ok": true
+    },
+    {
+      "step": "'Identify Linux distro': check distro name (e.g. Ubuntu, Fedora, SUSE)",
+      "class": "read_only",
+      "cmd": "lsb_release -a",
+      "valid": true,
+      "real": true,
+      "exec_ok": true
+    },
+    {
+      "step": "'Identify package manager': check if distro is known to use a specific package manager (e.g. apt for Ubuntu, yum for Fedora, zypper for SUSE)",
+      "class": "read_only",
+      "cmd": "rpm -q system-release",
+      "valid": true,
+      "real": true,
+      "exec_ok": true
+    },
+    {
+      "step": "'Confirm package manager': check output for correct package manager",
+      "class": "read_only",
+      "cmd": "dpkg -l | grep -i \"apt\"",
+      "valid": true,
+      "real": true,
+      "exec_ok": true
+    },
+    {
+      "step": "verify environment type (e.g. Linux, Mac, Windows)",
+      "class": "read_only",
+      "cmd": "echo -n \"$OSTYPE\"; echo \"$MACOSX\"; echo \"$UBUNTU\" | grep ^ | sort | tr -d \\",
+      "valid": true,
+      "real": true,
+      "exec_ok": true
+    },
+    {
+      "step": "identify packages manager (e.g. apt, yum, Homebrew)",
+      "class": "read_only",
+      "cmd": "dpkg -l | grep -i Package",
+      "valid": true,
+      "real": true,
+      "exec_ok": true
+    },
+    {
+      "step": "check if postgres package is already installed",
+      "class": "read_only",
+      "cmd": "dpkg -l | grep postgres",
+      "valid": true,
+      "real": true,
+      "exec_ok": true
+    },
+    {
+      "step": "check if postgresql-server package is already installed",
+      "class": "read_only",
+      "cmd": "apt-cache policy postgresql-server",
+      "valid": true,
+      "real": true,
+      "exec_ok": false
+    },
+    {
+      "step": "check if libpqxxn package is already installed",
+      "class": "read_only",
+      "cmd": "dpkg -s libpqxxn | grep installed",
+      "valid": true,
+      "real": true,
+      "exec_ok": true
+    },
+    {
+      "step": "Identify package manager (e.g., apt, yum, zypper, etc.)",
+      "class": "read_only",
+      "cmd": "dpkg -l | grep -i \"package manager\"",
+      "valid": true,
+      "real": true,
+      "exec_ok": true
+    },
+    {
+      "step": "Check if 'postgresql' is already installed",
+      "class": "read_only",
+      "cmd": "dpkg -l | grep postgresql",
+      "valid": true,
+      "real": true,
+      "exec_ok": true
+    },
+    {
+      "step": "Confirm package manager install command (e.g., 'apt install postgresql-server', 'yum install postgres')",
+      "class": "read_only",
+      "cmd": "sudo apt install postgresql-server",
+      "valid": true,
+      "real": true,
+      "exec_ok": null
+    },
+    {
+      "step": "Install 'postgresql'",
+      "class": "mutating",
+      "cmd": "sudo apt install postgresql",
+      "valid": true,
+      "real": true,
+      "exec_ok": null
+    },
+    {
+      "step": "Verify 'postgresql' installation",
+      "class": "read_only",
+      "cmd": "rpm -q postgresql",
+      "valid": true,
+      "real": true,
+      "exec_ok": true
+    },
+    {
+      "step": "Confirm 'postgres' service running",
+      "class": "read_only",
+      "cmd": "systemctl status postgres",
+      "valid": true,
+      "real": true,
+      "exec_ok": true
+    },
+    {
+      "step": "Verify that 'sudo' and 'service', 'systemctl', 'postgres' commands are in the system's command path",
+      "class": "read_only",
+      "cmd": "command -p",
+      "valid": true,
+      "real": true,
+      "exec_ok": true
+    },
+    {
+      "step": "Identify the default init system (sysvinit, systemd, or other)",
+      "class": "read_only",
+      "cmd": "cat /proc/1/status | grep -o \"^[a-z]\" | head -c 1",
+      "valid": true,
+      "real": true,
+      "exec_ok": true
+    },
+    {
+      "step": "Determine the specific command to start the PostgreSQL server (if service is not available, use systemctl)",
+      "class": "read_only",
+      "cmd": "pgrep -v 'postgres' /etc/xinet.d/postgresql | cut -d '/' -f4 | systemctl start postgres",
+      "valid": true,
+      "real": true,
+      "exec_ok": null
+    },
+    {
+      "step": "Confirm the PostgreSQL server is running",
+      "class": "read_only",
+      "cmd": "ps -ef | grep psql",
+      "valid": true,
+      "real": true,
+      "exec_ok": true
+    },
+    {
+      "step": "ATOMIC (if the init system is well-known and the command is well-documented)",
+      "class": "read_only",
+      "cmd": "init 6",
+      "valid": true,
+      "real": true,
+      "exec_ok": null
+    },
+    {
+      "step": "Verify environment type and available settings (e.g., 'is this a production or development environment')",
+      "class": "read_only",
+      "cmd": "printenv | grep \"IS_PROD\" | grep \"IS_DEPLOY\"",
+      "valid": true,
+      "real": true,
+      "exec_ok": true
+    },
+    {
+      "step": "Identify the current PostgreSQL user and password",
+      "class": "read_only",
+      "cmd": "echo $HOME/psqlrc",
+      "valid": true,
+      "real": true,
+      "exec_ok": true
+    },
+    {
+      "step": "Check if the desired settings exist or need to be changed",
+      "class": "read_only",
+      "cmd": "cat /proc/sys/net/ipv4/neighbour advertised_wild_rcnt",
+      "valid": true,
+      "real": true,
+      "exec_ok": true
+    },
+    {
+      "step": "Configure PostgreSQL password (if necessary)",
+      "class": "mutating",
+      "cmd": "psql -U postgres",
+      "valid": true,
+      "real": true,
+      "exec_ok": null
+    },
+    {
+      "step": "Check if the change succeeded",
+      "class": "read_only",
+      "cmd": "diff -u oldfile newfile",
+      "valid": true,
+      "real": true,
+      "exec_ok": null
+    },
+    {
+      "step": "Confirm new settings are correct (e.g., run a quick query to test)",
+      "class": "read_only",
+      "cmd": "cat /etc/ssh/ssh_host_* | grep HostName",
+      "valid": true,
+      "real": true,
+      "exec_ok": true
+    },
+    {
+      "step": "Verify server is up and running",
+      "class": "read_only",
+      "cmd": "systemctl status | grep \"active\"",
+      "valid": true,
+      "real": true,
+      "exec_ok": true
+    },
+    {
+      "step": "Identify server type (e.g., web server, database server, etc.)",
+      "class": "read_only",
+      "cmd": "cat /etc/protocols",
+      "valid": true,
+      "real": true,
+      "exec_ok": true
+    },
+    {
+      "step": "Check server logs for any errors",
+      "class": "read_only",
+      "cmd": "grep -ir error /var/log/*",
+      "valid": true,
+      "real": true,
+      "exec_ok": true
+    },
+    {
+      "step": "Run a simple query to test server functionality",
+      "class": "mutating",
+      "cmd": "curl http://localhost:8080/",
+      "valid": true,
+      "real": true,
+      "exec_ok": null
+    }
+  ]
+}

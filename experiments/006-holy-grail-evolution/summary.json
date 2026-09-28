@@ -1,0 +1,33 @@
+{
+  "A_best": 12,
+  "B_best": 11,
+  "C_best": 11,
+  "D_best": 12,
+  "A_distinct_min": 1.0,
+  "C_distinct_end": 1.0,
+  "emergence": false,
+  "selection_matters": true,
+  "anticollapse": false,
+  "champions_A": [
+    [
+      "Playful pandas passionately purchased pleasingly patterned plush pastel pink perfectly proportioned pillows.",
+      12
+    ],
+    [
+      "Placid promenades peacefully presented prized paintings profoundly performed perfect pieces publicly persistently.",
+      12
+    ],
+    [
+      "Playful pandas persistently purchased precisely pleasingly patterned pastel pink perfectly proportioned pillows.",
+      12
+    ],
+    [
+      "Painters painstakingly produced perfectly planned, precisely patterned, pleasing pink porcelain pottery pieces.",
+      12
+    ],
+    [
+      "Precarious piers presented peacefully painted perfectly patterned, pleasing porcelain pottery pieces proudly.",
+      12
+    ]
+  ]
+}

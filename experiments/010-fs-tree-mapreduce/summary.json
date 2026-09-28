@@ -1,0 +1,36 @@
+{
+  "map_accuracy_L0": 54.2,
+  "reduce_L1_deterministic_acc": 50.0,
+  "reduce_L1_jimmy_acc": 100.0,
+  "reduce_L2_tree_recall_jimmy": 1.0,
+  "folder_gold": {
+    "code": "code",
+    "config": "config",
+    "docs": "docs",
+    "data": "data"
+  },
+  "folder_det": {
+    "code": "config",
+    "config": "config",
+    "docs": "config",
+    "data": "data"
+  },
+  "folder_jimmy": {
+    "code": "code",
+    "config": "config",
+    "docs": "docs",
+    "data": "data"
+  },
+  "gold_themes": [
+    "code",
+    "config",
+    "data",
+    "docs"
+  ],
+  "tree_themes_jimmy": [
+    "code",
+    "config",
+    "data",
+    "docs"
+  ]
+}

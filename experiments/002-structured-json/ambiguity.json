@@ -1,0 +1,50 @@
+{
+  "intent_accuracy_all": 75.0,
+  "intent_accuracy_unambiguous": 100.0,
+  "n_unambiguous": 12,
+  "intent_accuracy_arguable": 37.5,
+  "n_arguable": 8,
+  "misses_unambiguous": [],
+  "misses_arguable": [
+    {
+      "idx": 4,
+      "gold": "account",
+      "majority": "refund",
+      "hit": false,
+      "ambiguity": "ARGUABLE",
+      "msg": "I've been charged twice this month for my subscription."
+    },
+    {
+      "idx": 8,
+      "gold": "question",
+      "majority": "technical_issue",
+      "hit": false,
+      "ambiguity": "ARGUABLE",
+      "msg": "When will the new firmware update be released for the r"
+    },
+    {
+      "idx": 9,
+      "gold": "complaint",
+      "majority": "shipping",
+      "hit": false,
+      "ambiguity": "ARGUABLE",
+      "msg": "Package arrived smashed and the contents are ruined. Un"
+    },
+    {
+      "idx": 17,
+      "gold": "complaint",
+      "majority": "technical_issue",
+      "hit": false,
+      "ambiguity": "ARGUABLE",
+      "msg": "This is the third time I'm writing about the same broke"
+    },
+    {
+      "idx": 18,
+      "gold": "question",
+      "majority": "account",
+      "hit": false,
+      "ambiguity": "ARGUABLE",
+      "msg": "How do I export my data before deleting my account?"
+    }
+  ]
+}

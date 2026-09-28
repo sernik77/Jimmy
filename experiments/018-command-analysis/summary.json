@@ -1,0 +1,181 @@
+{
+  "T1_describe": {
+    "keyconcept_recall": 0.679,
+    "faithful_rate": 1.0,
+    "samples": [
+      {
+        "cmd": "lsb_release -a",
+        "recall": 0.6,
+        "faithful": true,
+        "desc": "The \"lsb_release\" command is used to print out the current release of the Linux Standard Base and its version information."
+      },
+      {
+        "cmd": "dpkg -l | grep postgresql",
+        "recall": 1.0,
+        "faithful": true,
+        "desc": "The \"dpkg -l\" command lists all installed packages, and the \"grep postgresql\" command filters the output to show only lines containing \"postgresql\"."
+      },
+      {
+        "cmd": "systemctl status postgresql",
+        "recall": 0.8,
+        "faithful": true,
+        "desc": "The `systemctl status postgresql` command checks the status of the PostgreSQL database service, providing information about its current running state, such as whether it is active, active (running), or inactive (stopped)."
+      },
+      {
+        "cmd": "df -h",
+        "recall": 0.4,
+        "faithful": true,
+        "desc": "The df command displays a summary of the amount of disk space used and available on file system partitions, with output shown in a human-readable format."
+      },
+      {
+        "cmd": "free -m",
+        "recall": 0.6,
+        "faithful": true,
+        "desc": "The free command displays system memory usage statistics, including used and free memory and the amount of memory used by each process."
+      },
+      {
+        "cmd": "whoami",
+        "recall": 1.0,
+        "faithful": true,
+        "desc": "The shell command \"whoami\" displays the username of the current user account logged into the system."
+      },
+      {
+        "cmd": "uname -r",
+        "recall": 1.0,
+        "faithful": true,
+        "desc": "The \"uname -r\" command displays the kernel release information, showing the kernel version and its corresponding kernel architecture."
+      },
+      {
+        "cmd": "ps aux | grep nginx",
+        "recall": 1.0,
+        "faithful": true,
+        "desc": "The \"ps aux\" command lists the current processes running on the system, and the \"grep nginx\" command filters the output to display only processes running the Nginx web server service."
+      },
+      {
+        "cmd": "nproc",
+        "recall": 0.5,
+        "faithful": true,
+        "desc": "The \"nproc\" command displays the number of processing units of the current CPU."
+      },
+      {
+        "cmd": "which python3",
+        "recall": 0.6,
+        "faithful": true,
+        "desc": "The command \"which python3\" searches for and prints the path to the first occurrence of the python3 executable in the system's PATH environment variable, returning the full path to the Python 3 interpreter."
+      },
+      {
+        "cmd": "cat /etc/os-release",
+        "recall": 0.4,
+        "faithful": true,
+        "desc": "The \"cat\" command displays the contents of the /etc/os-release file."
+      },
+      {
+        "cmd": "id -un",
+        "recall": 0.25,
+        "faithful": true,
+        "desc": "The `id` command displays the user's unique identifier and group information for the specified user or all users."
+      }
+    ]
+  },
+  "T2_match_judge": {
+    "accuracy": 0.542,
+    "match_recall": 1.0,
+    "mismatch_recall": 0.083,
+    "n_pairs": 24
+  },
+  "T3_compare_diff": {
+    "accuracy": 0.833,
+    "differs_recall": 1.0
+  },
+  "T4_regenerate": {
+    "diverse_alt_rate": 1.0,
+    "valid_real_rate": 1.0,
+    "output_equivalence_rate": 0.583,
+    "samples": [
+      {
+        "cmd": "lsb_release -a",
+        "alt": "lsb_release -i",
+        "different": true,
+        "valid_real": true,
+        "equiv": false
+      },
+      {
+        "cmd": "dpkg -l | grep postgresql",
+        "alt": "ls /usr/bin/postgresql*",
+        "different": true,
+        "valid_real": true,
+        "equiv": true
+      },
+      {
+        "cmd": "systemctl status postgresql",
+        "alt": "systemctl show postgresql",
+        "different": true,
+        "valid_real": true,
+        "equiv": false
+      },
+      {
+        "cmd": "df -h",
+        "alt": "df -k",
+        "different": true,
+        "valid_real": true,
+        "equiv": true
+      },
+      {
+        "cmd": "free -m",
+        "alt": "free -h",
+        "different": true,
+        "valid_real": true,
+        "equiv": true
+      },
+      {
+        "cmd": "whoami",
+        "alt": "ps -o user=special",
+        "different": true,
+        "valid_real": true,
+        "equiv": true
+      },
+      {
+        "cmd": "uname -r",
+        "alt": "uname -o Linux",
+        "different": true,
+        "valid_real": true,
+        "equiv": false
+      },
+      {
+        "cmd": "ps aux | grep nginx",
+        "alt": "ps -ef | grep nginx",
+        "different": true,
+        "valid_real": true,
+        "equiv": true
+      },
+      {
+        "cmd": "nproc",
+        "alt": "pgrep -c processor /proc/loadavg",
+        "different": true,
+        "valid_real": true,
+        "equiv": false
+      },
+      {
+        "cmd": "which python3",
+        "alt": "which -a python3",
+        "different": true,
+        "valid_real": true,
+        "equiv": true
+      },
+      {
+        "cmd": "cat /etc/os-release",
+        "alt": "cat /etc/lsb_release -r",
+        "different": true,
+        "valid_real": true,
+        "equiv": false
+      },
+      {
+        "cmd": "id -un",
+        "alt": "id -nu",
+        "different": true,
+        "valid_real": true,
+        "equiv": true
+      }
+    ]
+  }
+}

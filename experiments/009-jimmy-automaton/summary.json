@@ -1,0 +1,60 @@
+{
+  "REAL_delta_2ndhalf": -0.1028,
+  "CTRL_delta_2ndhalf": -0.0132,
+  "REAL_activity_2ndhalf": 0.998,
+  "REAL_entropy_2ndhalf": 3.369,
+  "REAL_valid_rate_2ndhalf": 1.0,
+  "REAL_cycle": false,
+  "structure_emerged": false,
+  "activity_healthy": false,
+  "final_grid_REAL": [
+    [
+      "sparkle",
+      "blend",
+      "shine",
+      "blend",
+      "shining",
+      "meld"
+    ],
+    [
+      "merge",
+      "sparkle",
+      "merge",
+      "shine",
+      "merge",
+      "glitter"
+    ],
+    [
+      "sparkle",
+      "amalga",
+      "shine",
+      "blend",
+      "glittering",
+      "blend"
+    ],
+    [
+      "merge",
+      "glittering",
+      "amalgam",
+      "glittering",
+      "merge",
+      "glittering"
+    ],
+    [
+      "sparkle",
+      "merge",
+      "sparks",
+      "blend",
+      "glittering",
+      "blend"
+    ],
+    [
+      "merge",
+      "glittering",
+      "blend",
+      "twinkle",
+      "meld",
+      "sparkle"
+    ]
+  ]
+}

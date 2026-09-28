@@ -1,0 +1,39 @@
+{
+  "context_tokens": {
+    "NONE": 0,
+    "CHEATSHEET": 163,
+    "MANBASH_4K": 4000,
+    "MANBASH_OVER": 10000
+  },
+  "M": 3,
+  "per_context": {
+    "NONE": {
+      "sequence": 44.4,
+      "pipeline": 33.3,
+      "overall": 38.9,
+      "empty_response_rate": 0.0
+    },
+    "CHEATSHEET": {
+      "sequence": 100.0,
+      "pipeline": 88.9,
+      "overall": 94.4,
+      "empty_response_rate": 0.0
+    },
+    "MANBASH_4K": {
+      "sequence": 44.4,
+      "pipeline": 55.6,
+      "overall": 50.0,
+      "empty_response_rate": 0.0
+    },
+    "MANBASH_OVER": {
+      "sequence": 0.0,
+      "pipeline": 0.0,
+      "overall": 0.0,
+      "empty_response_rate": 0.0
+    }
+  },
+  "baseline_none": 38.9,
+  "best_context": "CHEATSHEET",
+  "best_context_overall": 94.4,
+  "big_input_helps": true
+}

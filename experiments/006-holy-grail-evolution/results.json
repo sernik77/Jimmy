@@ -1,0 +1,401 @@
+{
+  "A": {
+    "history": [
+      {
+        "best": 12,
+        "mean": 7.38,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 12,
+        "mean": 8,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 12,
+        "mean": 8.69,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 12,
+        "mean": 10.62,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 12,
+        "mean": 11.19,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 12,
+        "mean": 11.31,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 12,
+        "mean": 11.44,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 12,
+        "mean": 11.5,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 12,
+        "mean": 11.5,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 12,
+        "mean": 11.56,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 12,
+        "mean": 11.56,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 12,
+        "mean": 11.62,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 12,
+        "mean": 11.69,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 12,
+        "mean": 11.81,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 12,
+        "mean": 11.94,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 12,
+        "mean": 12,
+        "distinct_rate": 1.0
+      }
+    ],
+    "valid_rates": [
+      0.062,
+      0.062,
+      0.312,
+      0.312,
+      0.125,
+      0.125,
+      0.25,
+      0.062,
+      0.062,
+      0.0,
+      0.375,
+      0.125,
+      0.25,
+      0.125,
+      0.125
+    ],
+    "final_best": 12,
+    "champions": [
+      [
+        "Playful pandas passionately purchased pleasingly patterned plush pastel pink perfectly proportioned pillows.",
+        12
+      ],
+      [
+        "Placid promenades peacefully presented prized paintings profoundly performed perfect pieces publicly persistently.",
+        12
+      ],
+      [
+        "Playful pandas persistently purchased precisely pleasingly patterned pastel pink perfectly proportioned pillows.",
+        12
+      ],
+      [
+        "Painters painstakingly produced perfectly planned, precisely patterned, pleasing pink porcelain pottery pieces.",
+        12
+      ],
+      [
+        "Precarious piers presented peacefully painted perfectly patterned, pleasing porcelain pottery pieces proudly.",
+        12
+      ]
+    ]
+  },
+  "B": {
+    "history": [
+      {
+        "best": 12,
+        "mean": 7.69,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 11,
+        "mean": 3.69,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 11,
+        "mean": 1.25,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 11,
+        "mean": 1.25,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 11,
+        "mean": 1.25,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 9,
+        "mean": 0.56,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 10,
+        "mean": 0.62,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 11,
+        "mean": 1.31,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 10,
+        "mean": 0.62,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 11,
+        "mean": 2,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 11,
+        "mean": 1.31,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 11,
+        "mean": 1.31,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 11,
+        "mean": 1.94,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 10,
+        "mean": 0.62,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 11,
+        "mean": 0.69,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 11,
+        "mean": 2.06,
+        "distinct_rate": 1.0
+      }
+    ],
+    "valid_rates": [
+      0.125,
+      0.062,
+      0.062,
+      0.125,
+      0.125,
+      0.125,
+      0.125,
+      0.0,
+      0.188,
+      0.062,
+      0.188,
+      0.125,
+      0.0,
+      0.062,
+      0.125
+    ],
+    "final_best": 11,
+    "champions": [
+      [
+        "Perfectionists painstakingly planning precise, pleasing paintings precisely produced prolifically, peacefully, and persistently.",
+        11
+      ],
+      [
+        "Painting perfectionists professionally performed piano pieces precisely, producing pleasing, peacefully, and prolifically.",
+        11
+      ],
+      [
+        "Philosophers painstakingly planning perfectly, producing peerless, pleasing paintings precisely, persistently, and profitably.",
+        11
+      ],
+      [
+        "Here is a combined sentence with 12 words: \"Professionally performed piano pieces perfectly paralleled precise paintings past peaceful Parisian palaces precisely perfectly.\"",
+        0
+      ],
+      [
+        "Precise physicists painstakingly pursued precision-planned piano pieces past perfectly pleasing patches and peaceful palaces.",
+        0
+      ]
+    ]
+  },
+  "C": {
+    "history": [
+      {
+        "best": 11,
+        "mean": 7.62,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 11,
+        "mean": 2,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 0,
+        "mean": 0,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 12,
+        "mean": 1.38,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 11,
+        "mean": 0.69,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 11,
+        "mean": 2.06,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 11,
+        "mean": 1.38,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 12,
+        "mean": 2.12,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 11,
+        "mean": 1.31,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 11,
+        "mean": 1.31,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 12,
+        "mean": 3.5,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 12,
+        "mean": 1.38,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 10,
+        "mean": 0.62,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 11,
+        "mean": 0.69,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 11,
+        "mean": 1.31,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 11,
+        "mean": 2.06,
+        "distinct_rate": 1.0
+      }
+    ],
+    "valid_rates": [
+      0.188,
+      0.0,
+      0.125,
+      0.062,
+      0.188,
+      0.125,
+      0.188,
+      0.125,
+      0.125,
+      0.312,
+      0.125,
+      0.062,
+      0.062,
+      0.125,
+      0.188
+    ],
+    "final_best": 11,
+    "champions": [
+      [
+        "Precise pharmacists persistently push peerless, pasteurized, pasture-raised products perfectly presenting passionately.",
+        11
+      ],
+      [
+        "Painters persistently pursuing perfectionist patterns produce pleasingly peaceful pictures painstakingly outside palaces.",
+        11
+      ],
+      [
+        "Perceptive philosophers progressively pace past precisely proportioned, peaceful, palatable, and picturesque promenades.",
+        11
+      ],
+      [
+        "Pleasingly perfumed perfumers persistently pamper priceless, peaceful, and perfectly patterned paintings persistently pleasing people.",
+        0
+      ],
+      [
+        "Painting profoundly perfecting pleasing products pleases particularly perceptive patrons painstakingly producing precious paintings patiently.",
+        0
+      ]
+    ]
+  },
+  "D": {
+    "budget": 256,
+    "best": 12,
+    "best_text": "Passionate pandas passionately played peaceful piano pieces perfectly pleasing puzzled people peacefully.",
+    "top5": [
+      [
+        12,
+        "Passionate pandas passionately played peaceful piano pieces perfectly pleasing puzzled people peacefully."
+      ],
+      [
+        12,
+        "Ponderous physicists passionately pursued picturesque patterns persistently past perfect planetary physics platforms."
+      ],
+      [
+        11,
+        "Pondering profound philosophies, peaceful pundits precisely pinpoint pivotal problems patiently persistently."
+      ],
+      [
+        11,
+        "Peculiarly, picturesque paintings proudly presented at Parisian premieres periodically pleasing people passionately."
+      ],
+      [
+        11,
+        "Perfectly puzzled pedestrians promptly paid particular prices for prized pandas playing passionately."
+      ]
+    ]
+  }
+}

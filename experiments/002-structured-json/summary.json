@@ -1,0 +1,7 @@
+{
+  "validity_rate_per_single_sample": 95.0,
+  "validity_best_of_8": 100.0,
+  "intent_accuracy_majority_vote": 75.0,
+  "n_inputs": 20,
+  "N": 8
+}

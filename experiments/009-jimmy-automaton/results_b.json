@@ -1,0 +1,614 @@
+{
+  "REAL": {
+    "history": [
+      {
+        "step": 0,
+        "activity": 1.0,
+        "entropy": 4.705,
+        "parse_fail": 0.0,
+        "off_menu": 0.139,
+        "neighbor_sim": 0.0056,
+        "random_sim": 0.0199,
+        "delta": -0.0143
+      },
+      {
+        "step": 1,
+        "activity": 1.0,
+        "entropy": 3.971,
+        "parse_fail": 0.0,
+        "off_menu": 0.083,
+        "neighbor_sim": 0.0035,
+        "random_sim": 0.0856,
+        "delta": -0.082
+      },
+      {
+        "step": 2,
+        "activity": 1.0,
+        "entropy": 3.441,
+        "parse_fail": 0.0,
+        "off_menu": 0.0,
+        "neighbor_sim": 0.0014,
+        "random_sim": 0.0719,
+        "delta": -0.0705
+      },
+      {
+        "step": 3,
+        "activity": 1.0,
+        "entropy": 3.139,
+        "parse_fail": 0.0,
+        "off_menu": 0.028,
+        "neighbor_sim": 0.0025,
+        "random_sim": 0.2024,
+        "delta": -0.1999
+      },
+      {
+        "step": 4,
+        "activity": 1.0,
+        "entropy": 2.739,
+        "parse_fail": 0.0,
+        "off_menu": 0.0,
+        "neighbor_sim": 0.0,
+        "random_sim": 0.2222,
+        "delta": -0.2222
+      },
+      {
+        "step": 5,
+        "activity": 1.0,
+        "entropy": 2.299,
+        "parse_fail": 0.0,
+        "off_menu": 0.0,
+        "neighbor_sim": 0.0,
+        "random_sim": 0.2118,
+        "delta": -0.2118
+      },
+      {
+        "step": 6,
+        "activity": 1.0,
+        "entropy": 2.109,
+        "parse_fail": 0.0,
+        "off_menu": 0.0,
+        "neighbor_sim": 0.0,
+        "random_sim": 0.3484,
+        "delta": -0.3484
+      },
+      {
+        "step": 7,
+        "activity": 1.0,
+        "entropy": 1.855,
+        "parse_fail": 0.0,
+        "off_menu": 0.0,
+        "neighbor_sim": 0.0,
+        "random_sim": 0.3056,
+        "delta": -0.3056
+      },
+      {
+        "step": 8,
+        "activity": 1.0,
+        "entropy": 1.696,
+        "parse_fail": 0.0,
+        "off_menu": 0.0,
+        "neighbor_sim": 0.0,
+        "random_sim": 0.4583,
+        "delta": -0.4583
+      },
+      {
+        "step": 9,
+        "activity": 1.0,
+        "entropy": 1.676,
+        "parse_fail": 0.0,
+        "off_menu": 0.0,
+        "neighbor_sim": 0.0,
+        "random_sim": 0.4028,
+        "delta": -0.4028
+      },
+      {
+        "step": 10,
+        "activity": 1.0,
+        "entropy": 1.482,
+        "parse_fail": 0.0,
+        "off_menu": 0.0,
+        "neighbor_sim": 0.0,
+        "random_sim": 0.4306,
+        "delta": -0.4306
+      },
+      {
+        "step": 11,
+        "activity": 1.0,
+        "entropy": 1.496,
+        "parse_fail": 0.0,
+        "off_menu": 0.0,
+        "neighbor_sim": 0.0,
+        "random_sim": 0.3333,
+        "delta": -0.3333
+      },
+      {
+        "step": 12,
+        "activity": 1.0,
+        "entropy": 1.496,
+        "parse_fail": 0.0,
+        "off_menu": 0.0,
+        "neighbor_sim": 0.0,
+        "random_sim": 0.4583,
+        "delta": -0.4583
+      },
+      {
+        "step": 13,
+        "activity": 1.0,
+        "entropy": 1.5,
+        "parse_fail": 0.0,
+        "off_menu": 0.0,
+        "neighbor_sim": 0.0,
+        "random_sim": 0.2917,
+        "delta": -0.2917
+      },
+      {
+        "step": 14,
+        "activity": 1.0,
+        "entropy": 1.5,
+        "parse_fail": 0.0,
+        "off_menu": 0.0,
+        "neighbor_sim": 0.0,
+        "random_sim": 0.4306,
+        "delta": -0.4306
+      },
+      {
+        "step": 15,
+        "activity": 1.0,
+        "entropy": 1.5,
+        "parse_fail": 0.0,
+        "off_menu": 0.0,
+        "neighbor_sim": 0.0,
+        "random_sim": 0.5139,
+        "delta": -0.5139
+      },
+      {
+        "step": 16,
+        "activity": 1.0,
+        "entropy": 1.496,
+        "parse_fail": 0.0,
+        "off_menu": 0.0,
+        "neighbor_sim": 0.0,
+        "random_sim": 0.4306,
+        "delta": -0.4306
+      },
+      {
+        "step": 17,
+        "activity": 1.0,
+        "entropy": 1.482,
+        "parse_fail": 0.0,
+        "off_menu": 0.0,
+        "neighbor_sim": 0.0,
+        "random_sim": 0.2778,
+        "delta": -0.2778
+      },
+      {
+        "step": 18,
+        "activity": 1.0,
+        "entropy": 1.496,
+        "parse_fail": 0.0,
+        "off_menu": 0.0,
+        "neighbor_sim": 0.0,
+        "random_sim": 0.3889,
+        "delta": -0.3889
+      },
+      {
+        "step": 19,
+        "activity": 1.0,
+        "entropy": 1.482,
+        "parse_fail": 0.0,
+        "off_menu": 0.0,
+        "neighbor_sim": 0.0,
+        "random_sim": 0.2222,
+        "delta": -0.2222
+      },
+      {
+        "step": 20,
+        "activity": 1.0,
+        "entropy": 1.482,
+        "parse_fail": 0.0,
+        "off_menu": 0.0,
+        "neighbor_sim": 0.0,
+        "random_sim": 0.3611,
+        "delta": -0.3611
+      },
+      {
+        "step": 21,
+        "activity": 1.0,
+        "entropy": 1.482,
+        "parse_fail": 0.0,
+        "off_menu": 0.0,
+        "neighbor_sim": 0.0,
+        "random_sim": 0.3611,
+        "delta": -0.3611
+      },
+      {
+        "step": 22,
+        "activity": 1.0,
+        "entropy": 1.496,
+        "parse_fail": 0.0,
+        "off_menu": 0.0,
+        "neighbor_sim": 0.0,
+        "random_sim": 0.3194,
+        "delta": -0.3194
+      },
+      {
+        "step": 23,
+        "activity": 1.0,
+        "entropy": 1.5,
+        "parse_fail": 0.0,
+        "off_menu": 0.0,
+        "neighbor_sim": 0.0,
+        "random_sim": 0.25,
+        "delta": -0.25
+      },
+      {
+        "step": 24,
+        "activity": 1.0,
+        "entropy": 1.496,
+        "parse_fail": 0.0,
+        "off_menu": 0.0,
+        "neighbor_sim": 0.0,
+        "random_sim": 0.2917,
+        "delta": -0.2917
+      }
+    ],
+    "cycle_detected": true,
+    "final_grid": [
+      [
+        "ocean",
+        "cloud",
+        "ocean",
+        "cloud",
+        "ocean",
+        "cloud"
+      ],
+      [
+        "cloud",
+        "ocean",
+        "cloud",
+        "ocean",
+        "cloud",
+        "ocean"
+      ],
+      [
+        "ocean",
+        "bread",
+        "ocean",
+        "bread",
+        "ocean",
+        "bread"
+      ],
+      [
+        "bread",
+        "ocean",
+        "bread",
+        "ocean",
+        "bread",
+        "ocean"
+      ],
+      [
+        "ocean",
+        "bread",
+        "ocean",
+        "cloud",
+        "ocean",
+        "bread"
+      ],
+      [
+        "cloud",
+        "ocean",
+        "cloud",
+        "ocean",
+        "cloud",
+        "ocean"
+      ]
+    ],
+    "n_final_distinct": 3
+  },
+  "CTRL": {
+    "history": [
+      {
+        "step": 0,
+        "activity": 0.972,
+        "entropy": 4.274,
+        "parse_fail": 0.0,
+        "off_menu": 0.0,
+        "neighbor_sim": 0.0254,
+        "random_sim": 0.0479,
+        "delta": -0.0226
+      },
+      {
+        "step": 1,
+        "activity": 0.972,
+        "entropy": 3.558,
+        "parse_fail": 0.0,
+        "off_menu": 0.0,
+        "neighbor_sim": 0.1077,
+        "random_sim": 0.1166,
+        "delta": -0.0089
+      },
+      {
+        "step": 2,
+        "activity": 0.861,
+        "entropy": 2.698,
+        "parse_fail": 0.0,
+        "off_menu": 0.0,
+        "neighbor_sim": 0.2609,
+        "random_sim": 0.2847,
+        "delta": -0.0238
+      },
+      {
+        "step": 3,
+        "activity": 0.667,
+        "entropy": 1.788,
+        "parse_fail": 0.0,
+        "off_menu": 0.0,
+        "neighbor_sim": 0.48,
+        "random_sim": 0.4042,
+        "delta": 0.0758
+      },
+      {
+        "step": 4,
+        "activity": 0.389,
+        "entropy": 0.365,
+        "parse_fail": 0.0,
+        "off_menu": 0.0,
+        "neighbor_sim": 0.8935,
+        "random_sim": 0.9074,
+        "delta": -0.0139
+      },
+      {
+        "step": 5,
+        "activity": 0.083,
+        "entropy": 0.183,
+        "parse_fail": 0.0,
+        "off_menu": 0.0,
+        "neighbor_sim": 0.9444,
+        "random_sim": 0.9583,
+        "delta": -0.0139
+      },
+      {
+        "step": 6,
+        "activity": 0.028,
+        "entropy": -0.0,
+        "parse_fail": 0.0,
+        "off_menu": 0.0,
+        "neighbor_sim": 1.0,
+        "random_sim": 1.0,
+        "delta": 0.0
+      },
+      {
+        "step": 7,
+        "activity": 0.0,
+        "entropy": -0.0,
+        "parse_fail": 0.0,
+        "off_menu": 0.0,
+        "neighbor_sim": 1.0,
+        "random_sim": 1.0,
+        "delta": 0.0
+      },
+      {
+        "step": 8,
+        "activity": 0.0,
+        "entropy": -0.0,
+        "parse_fail": 0.0,
+        "off_menu": 0.0,
+        "neighbor_sim": 1.0,
+        "random_sim": 1.0,
+        "delta": 0.0
+      },
+      {
+        "step": 9,
+        "activity": 0.0,
+        "entropy": -0.0,
+        "parse_fail": 0.0,
+        "off_menu": 0.0,
+        "neighbor_sim": 1.0,
+        "random_sim": 1.0,
+        "delta": 0.0
+      },
+      {
+        "step": 10,
+        "activity": 0.0,
+        "entropy": -0.0,
+        "parse_fail": 0.0,
+        "off_menu": 0.0,
+        "neighbor_sim": 1.0,
+        "random_sim": 1.0,
+        "delta": 0.0
+      },
+      {
+        "step": 11,
+        "activity": 0.0,
+        "entropy": -0.0,
+        "parse_fail": 0.0,
+        "off_menu": 0.0,
+        "neighbor_sim": 1.0,
+        "random_sim": 1.0,
+        "delta": 0.0
+      },
+      {
+        "step": 12,
+        "activity": 0.0,
+        "entropy": -0.0,
+        "parse_fail": 0.0,
+        "off_menu": 0.0,
+        "neighbor_sim": 1.0,
+        "random_sim": 1.0,
+        "delta": 0.0
+      },
+      {
+        "step": 13,
+        "activity": 0.0,
+        "entropy": -0.0,
+        "parse_fail": 0.0,
+        "off_menu": 0.0,
+        "neighbor_sim": 1.0,
+        "random_sim": 1.0,
+        "delta": 0.0
+      },
+      {
+        "step": 14,
+        "activity": 0.0,
+        "entropy": -0.0,
+        "parse_fail": 0.0,
+        "off_menu": 0.0,
+        "neighbor_sim": 1.0,
+        "random_sim": 1.0,
+        "delta": 0.0
+      },
+      {
+        "step": 15,
+        "activity": 0.0,
+        "entropy": -0.0,
+        "parse_fail": 0.0,
+        "off_menu": 0.0,
+        "neighbor_sim": 1.0,
+        "random_sim": 1.0,
+        "delta": 0.0
+      },
+      {
+        "step": 16,
+        "activity": 0.0,
+        "entropy": -0.0,
+        "parse_fail": 0.0,
+        "off_menu": 0.0,
+        "neighbor_sim": 1.0,
+        "random_sim": 1.0,
+        "delta": 0.0
+      },
+      {
+        "step": 17,
+        "activity": 0.0,
+        "entropy": -0.0,
+        "parse_fail": 0.0,
+        "off_menu": 0.0,
+        "neighbor_sim": 1.0,
+        "random_sim": 1.0,
+        "delta": 0.0
+      },
+      {
+        "step": 18,
+        "activity": 0.0,
+        "entropy": -0.0,
+        "parse_fail": 0.0,
+        "off_menu": 0.0,
+        "neighbor_sim": 1.0,
+        "random_sim": 1.0,
+        "delta": 0.0
+      },
+      {
+        "step": 19,
+        "activity": 0.0,
+        "entropy": -0.0,
+        "parse_fail": 0.0,
+        "off_menu": 0.0,
+        "neighbor_sim": 1.0,
+        "random_sim": 1.0,
+        "delta": 0.0
+      },
+      {
+        "step": 20,
+        "activity": 0.0,
+        "entropy": -0.0,
+        "parse_fail": 0.0,
+        "off_menu": 0.0,
+        "neighbor_sim": 1.0,
+        "random_sim": 1.0,
+        "delta": 0.0
+      },
+      {
+        "step": 21,
+        "activity": 0.0,
+        "entropy": -0.0,
+        "parse_fail": 0.0,
+        "off_menu": 0.0,
+        "neighbor_sim": 1.0,
+        "random_sim": 1.0,
+        "delta": 0.0
+      },
+      {
+        "step": 22,
+        "activity": 0.0,
+        "entropy": -0.0,
+        "parse_fail": 0.0,
+        "off_menu": 0.0,
+        "neighbor_sim": 1.0,
+        "random_sim": 1.0,
+        "delta": 0.0
+      },
+      {
+        "step": 23,
+        "activity": 0.0,
+        "entropy": -0.0,
+        "parse_fail": 0.0,
+        "off_menu": 0.0,
+        "neighbor_sim": 1.0,
+        "random_sim": 1.0,
+        "delta": 0.0
+      },
+      {
+        "step": 24,
+        "activity": 0.0,
+        "entropy": -0.0,
+        "parse_fail": 0.0,
+        "off_menu": 0.0,
+        "neighbor_sim": 1.0,
+        "random_sim": 1.0,
+        "delta": 0.0
+      }
+    ],
+    "cycle_detected": true,
+    "final_grid": [
+      [
+        "ocean",
+        "ocean",
+        "ocean",
+        "ocean",
+        "ocean",
+        "ocean"
+      ],
+      [
+        "ocean",
+        "ocean",
+        "ocean",
+        "ocean",
+        "ocean",
+        "ocean"
+      ],
+      [
+        "ocean",
+        "ocean",
+        "ocean",
+        "ocean",
+        "ocean",
+        "ocean"
+      ],
+      [
+        "ocean",
+        "ocean",
+        "ocean",
+        "ocean",
+        "ocean",
+        "ocean"
+      ],
+      [
+        "ocean",
+        "ocean",
+        "ocean",
+        "ocean",
+        "ocean",
+        "ocean"
+      ],
+      [
+        "ocean",
+        "ocean",
+        "ocean",
+        "ocean",
+        "ocean",
+        "ocean"
+      ]
+    ],
+    "n_final_distinct": 1
+  }
+}

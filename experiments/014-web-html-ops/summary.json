@@ -1,0 +1,53 @@
+{
+  "links": {
+    "axis": "mechanical",
+    "gold_n": 34,
+    "jimmy_PRF_mean": [
+      0.799,
+      0.539,
+      0.644
+    ],
+    "deterministic_PRF": [
+      1.0,
+      1.0,
+      1.0
+    ]
+  },
+  "strip_text": {
+    "axis": "mechanical",
+    "jimmy_content_F1_mean": 0.681,
+    "jimmy_tag_leak_mean": 0.0,
+    "deterministic": "perfekcyjny strip, 0 leak, ~0 ms"
+  },
+  "keyword": {
+    "axis": "mechanical",
+    "keyword": "models",
+    "gold_n": 2,
+    "n_titles": 30,
+    "jimmy_PRF_mean": [
+      0.633,
+      0.833,
+      0.69
+    ],
+    "deterministic_PRF": [
+      1.0,
+      1.0,
+      1.0
+    ]
+  },
+  "topic_filter": {
+    "axis": "semantic",
+    "gold_n": 6,
+    "jimmy_PRF_mean": [
+      1.0,
+      0.889,
+      0.939
+    ],
+    "deterministic": "BRAK (semantyczne — regex nie odróżni tematu)"
+  },
+  "describe": {
+    "axis": "semantic",
+    "gold_terms_hit": "3/8",
+    "description": "This web page appears to be the front page of the Hacker News website, which is a technology news and community site. The page displays a list of top-ranked stories, each with a title, a score, and a user's name and timestamp, along with voting options and comment counts."
+  }
+}

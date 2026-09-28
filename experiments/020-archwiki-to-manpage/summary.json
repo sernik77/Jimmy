@@ -1,0 +1,30 @@
+{
+  "src_tokens": 11931,
+  "n_chunks": 5,
+  "n_commands_extracted": 20,
+  "n_seealso": 12,
+  "name_desc": "Linux system and service manager for the entire system",
+  "ARM_B_hybrid": {
+    "renders_ok": true,
+    "groff_warnings": 0,
+    "sections": {
+      "NAME": true,
+      "DESCRIPTION": true,
+      "SEE ALSO": true,
+      "n_sections": 4
+    },
+    "name_line_valid": true,
+    "description_faithfulness": 0.857
+  },
+  "ARM_A_jimmy_troff": {
+    "renders_ok": true,
+    "groff_warnings": 15,
+    "sections": {
+      "NAME": true,
+      "DESCRIPTION": true,
+      "SEE ALSO": true,
+      "n_sections": 3
+    },
+    "name_line_valid": false
+  }
+}

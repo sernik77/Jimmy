@@ -1,0 +1,78 @@
+{
+  "bootstrap_B": 300,
+  "curve_accuracy_at_vote_k": {
+    "1": {
+      "mean": 64.2,
+      "std": 8.4
+    },
+    "3": {
+      "mean": 74.8,
+      "std": 7.1
+    },
+    "5": {
+      "mean": 81.2,
+      "std": 6.1
+    },
+    "7": {
+      "mean": 85.0,
+      "std": 5.2
+    },
+    "11": {
+      "mean": 88.6,
+      "std": 4.3
+    },
+    "15": {
+      "mean": 89.9,
+      "std": 4.2
+    },
+    "21": {
+      "mean": 91.3,
+      "std": 3.4
+    },
+    "31": {
+      "mean": 92.0,
+      "std": 2.9
+    }
+  },
+  "n_tasks": 24,
+  "tasks_where_vote_fails": [
+    {
+      "gold": 45,
+      "majority": 60,
+      "top3": [
+        [
+          60,
+          8
+        ],
+        [
+          45,
+          7
+        ],
+        [
+          30,
+          4
+        ]
+      ],
+      "q": "Three friends split a $90 bill. One pays double each of the "
+    },
+    {
+      "gold": 38,
+      "majority": 14,
+      "top3": [
+        [
+          14,
+          9
+        ],
+        [
+          32,
+          4
+        ],
+        [
+          34,
+          4
+        ]
+      ],
+      "q": "You save $5 the first week and $3 more each week than the we"
+    }
+  ]
+}

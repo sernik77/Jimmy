@@ -1,0 +1,91 @@
+{
+  "part_a": {
+    "europe": {
+      "coverage_vs_N": {
+        "1": 1,
+        "2": 1.79,
+        "5": 3.73,
+        "10": 5.43,
+        "20": 6.85,
+        "40": 7.7
+      },
+      "canon": 44,
+      "total_unique": 8,
+      "pct_space_at_N40": 17.5,
+      "lift_N40_vs_N1": 7.7,
+      "top5_modes": [
+        [
+          "greece",
+          15
+        ],
+        [
+          "france",
+          10
+        ],
+        [
+          "italy",
+          9
+        ],
+        [
+          "portugal",
+          9
+        ],
+        [
+          "spain",
+          7
+        ]
+      ]
+    },
+    "us_states": {
+      "coverage_vs_N": {
+        "1": 1,
+        "2": 1.82,
+        "5": 3.59,
+        "10": 5.39,
+        "20": 7.29,
+        "40": 9.06
+      },
+      "canon": 50,
+      "total_unique": 11,
+      "pct_space_at_N40": 18.1,
+      "lift_N40_vs_N1": 9.06,
+      "top5_modes": [
+        [
+          "oklahoma",
+          16
+        ],
+        [
+          "hawaii",
+          15
+        ],
+        [
+          "alaska",
+          9
+        ],
+        [
+          "nevada",
+          4
+        ],
+        [
+          "wyoming",
+          4
+        ]
+      ]
+    }
+  },
+  "part_b": {
+    "mean_reduction_pct": 26.9,
+    "per_task_reduction_pct": [
+      31.2,
+      4.6,
+      47.4,
+      20.6,
+      19.1,
+      36.9,
+      23.8,
+      31.4
+    ],
+    "all_tasks_have_valid": true,
+    "min_valid_count": 6
+  }
+}

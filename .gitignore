@@ -1,0 +1,13 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Cache narzedzia summarize (gdyby ktos wskazal --cache-dir w repo)
+.cache/
+
+# Prywatne notatki / brudne testy uzytkownika (nie sa czescia projektu)
+test/
+DRAFT.md

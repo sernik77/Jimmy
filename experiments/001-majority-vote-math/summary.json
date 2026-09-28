@@ -1,0 +1,12 @@
+{
+  "accuracy_avg_single_sample": 64.9,
+  "accuracy_at_vote_k": {
+    "1": 70.8,
+    "3": 83.3,
+    "7": 79.2,
+    "15": 95.8,
+    "31": 91.7
+  },
+  "lift_vote31_vs_single": 26.8,
+  "n_tasks": 24
+}

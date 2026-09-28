@@ -1,0 +1,125 @@
+{
+  "accept_rate_first_third": 0.219,
+  "accept_rate_last_third": 0.062,
+  "total_unique": 33,
+  "desc_content_diversity": 0.533,
+  "desc_top_words": [
+    [
+      "iridescent",
+      14
+    ],
+    [
+      "has",
+      10
+    ],
+    [
+      "bioluminescent",
+      6
+    ],
+    [
+      "crystalline",
+      6
+    ],
+    [
+      "skin",
+      4
+    ],
+    [
+      "like",
+      4
+    ],
+    [
+      "body",
+      3
+    ],
+    [
+      "possesses",
+      3
+    ]
+  ],
+  "open_ended": false,
+  "dup_in_total": 272,
+  "dup_out_total": 15,
+  "sample_20_items": [
+    [
+      "name",
+      "Zrhk'Thik, trait: Large, iridescent, flying creatures with four glowing tentacles."
+    ],
+    [
+      "hereisanewcreature",
+      ""
+    ],
+    [
+      "heresabrandnewone",
+      ""
+    ],
+    [
+      "zhilakian",
+      "has a translucent, gelatinous body."
+    ],
+    [
+      "gleeblox",
+      "possesses iridescent skin membranes"
+    ],
+    [
+      "flargle",
+      "has an extremely vibrant and iridescent aura."
+    ],
+    [
+      "nexarion",
+      "possesses iridescent, luminescent skin"
+    ],
+    [
+      "xylonix",
+      "has a bioluminescent shell on its back that glows with a soft blue light."
+    ],
+    [
+      "zhathikhasagelatinousexoskeleton",
+      ""
+    ],
+    [
+      "zhilakionisoneofthenamesonthelistsoletsinventanewonethatsdifferenthereisanewcreature",
+      ""
+    ],
+    [
+      "zhilakianwingedquadrupedwithrazorsharpquills",
+      ""
+    ],
+    [
+      "zhilixi",
+      "possess a bioluminescent, iridescent, skin-sheen shield."
+    ],
+    [
+      "kaelmoxon",
+      "has iridescent, crystalline carapace that refracts light."
+    ],
+    [
+      "zhilakianisnotonthelistsoillstartbyinventingacreaturethatresemblesit",
+      ""
+    ],
+    [
+      "kraelor",
+      "A creature with a crystalline exoskeleton and iridescent wing-like appendages."
+    ],
+    [
+      "torvitokhasabioluminescentdorsalfinlikegrowthonitshead",
+      ""
+    ],
+    [
+      "borvus",
+      "A towering, iridescent, crystalline, flying creature."
+    ],
+    [
+      "kaleekorvax",
+      "has a slender, iridescent, jellyfish-like tail."
+    ],
+    [
+      "borvoxhasagelatinousiridescentexoskeleton",
+      ""
+    ],
+    [
+      "kraalox",
+      "possessable crystalline armor-plating"
+    ]
+  ]
+}

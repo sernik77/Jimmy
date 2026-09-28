@@ -1,0 +1,218 @@
+Here is the man page in troff man format:
+
+.TH SYSTEMD 8 "2018-09-01" "SYSTEMD DOCUMENTATION"
+
+.SH NAME
+systemd - A suite of basic building blocks for a Linux system
+
+.SH "DESCRIPTION"
+systemd provides a system and service manager that runs as PID 1 and starts the rest of the system. It provides aggressive parallelization capabilities, uses socket and D-Bus activation for starting services, offers on-demand starting of daemons, keeps track of processes using Linux control groups, maintains mount and automount points, and implements an elaborate transactional dependency-based service control logic. Other parts include a logging daemon, utilities to control basic system configuration like the hostname, date, locale, maintain a list of logged-in users and running containers and virtual machines, system accounts, runtime directories and settings, and daemons to manage simple network configuration, network time synchronization, log forwarding, and name resolution.
+
+.SH NAME
+Basic systemctl usage
+
+.SH "DESCRIPTION"
+The main command used to introspect and control systemd is systemctl. Some of its uses are examining the system state and managing the system and services. See \fP\fBsystemctl(1)\fR for more details.
+
+.SH "SEE ALSO"
+\*(lq\f(C)systemctl(1)\fR
+\*(lqdaemon(7)\fR
+
+.SH "NAME
+Using units
+
+.SH "DESCRIPTION"
+Units commonly include, but are not limited to, services (\fCservice), mount points (\fCmount), devices (\fCdevice) and sockets (\fCsocket).
+
+.SH "NAME
+Writing unit files
+
+.SH "DESCRIPTION"
+When using \fBsystemctl\fR, you generally have to specify the complete name of the unit file, including its suffix, for example \fCssh.service\fR.
+There are a few short forms when specifying the unit in the following \fBsystemctl\fR commands:
+
+If you do not specify the suffix, \fBsystemctl\fR will assume \fC.service\fR.
+Mount points will automatically be translated into the appropriate \fC.mount\fR unit. For example, specifying \fC/home\fR is equivalent to \fCmount.home\fR.
+Similar to mount points, devices are automatically translated into the appropriate \fC.device\fR unit, therefore specifying \fC/dev/sda2\fR is equivalent to \fCdev-sda2.device\fR.
+See \fBsystemd.unit(5)\fR for details.
+
+.SH "NAME
+Targets
+
+.SH "DESCRIPTION"
+A target is a collection of units that are activated together.
+
+.SH "NAME
+Get current targets
+
+.SH "DESCRIPTION"
+Get the current targets.
+\*(lq\*(bR\fP\*(lq\*(bBsystemd\*(lq\*(bR\*(lq\*(bRsystemd\-targets\*(lq\*(bR
+
+.SH "NAME
+Create custom target
+
+.SH "DESCRIPTION"
+Create a custom target.
+\*(lq\*(bR\fP\*(lq\*(bBsystemd\*(lq\*(bR\*(lq\*(bRsystemd\-create\-target\*(lq\*(bR
+
+.SH "NAME
+systemd components
+
+.SH "DESCRIPTION"
+systemd components include:
+\*(lq\*(bR\fP\*(lq\*(bBsystemd\*(lq\*(bR
+\*(lq\*(bR\fP\*(lq\*(bBsystemd.mount\*(lq\*(bR
+\*(lq\*(bR\fP\*(lq\*(bBsystemd\*(lq\*(bR\*(lq\*(bRsystemd\.mount\*(lq\*(bR
+
+.SH "NAME
+systemd-mount
+
+.SH "DESCRIPTION"
+Mounts filesystems.
+
+.SH "NAME
+GPT partition automounting
+
+.SH "DESCRIPTION"
+Automounting for GPT partition.
+
+.SH "NAME
+systemd-sysvcompat
+
+.SH "DESCRIPTION"
+Compatibility layer for sysctl.
+
+.SH "NAME
+systemd-tmpfiles
+
+.SH "DESCRIPTION"
+Manages temporary files.
+
+.SH "NAME
+drop-in files
+
+.SH "DESCRIPTION"
+Configuration file in a subdirectory.
+
+.SH "NAME
+Drop-in files
+
+.SH "DESCRIPTION"
+Drop-in files can be used to modify the configuration of a service. They should be placed in the directory /etc/systemd/drop-in/ in the appropriate unit path.
+
+.SH "SEE ALSO"
+\*(lq\*(bRsystemd\.dropin\.d\*(lq\*(bR
+
+.SH "NAME
+Tips and tricks
+
+.SH "DESCRIPTION"
+\*(lq\*(bR\fP\*(lq\*(bBsystemd\*(lq\*(bR
+\*(lq\*(bR\fP\*(lq\*(bBSocket\*(lq\*(bR
+\*(lq\*(bR\fP\*(lq\*(bBactivation\*(lq\*(bR
+
+.SH "NAME
+Tips and tricks
+
+.SH "DESCRIPTION"
+Socket activation is a feature of systemd that allows a service to be started and run in the foreground, and then switched to background operation, or started in background operation immediately. This is done by adding the socket activation setting to the service configuration file. See \fBsystemd\.socket(5)\fR for details.
+
+.SH "NAME
+Tips and tricks
+
+.SH "DESCRIPTION"
+systemd has some graphical user interface configuration tools for managing the system, including systemd-generate-home.service, systemd-generate-vconsole.service, and others.
+
+.SH "NAME
+Running services after the network is up
+
+.SH "DESCRIPTION"
+You can use the \fBAfter=\fR option in the service file to delay the start of a service until the network is available.
+
+.SH "NAME
+Enable installed units by default
+
+.SH "DESCRIPTION"
+You can use the \fBDefaultDependencies=\fR option in the service file to enable a service to start when the system starts up.
+
+.SH "NAME
+Sandboxing
+
+.SH "DESCRIPTION"
+systemd provides sandboxing for applications. This feature is used to isolate applications from each other and the rest of the system.
+
+.SH "NAME
+Control user unit as root
+
+.SH "DESCRIPTION"
+You can use \fBsystemd-runas\*(lq\*(bR to control a user unit.
+
+.SH "NAME
+Troubleshooting
+
+.SH "DESCRIPTION"
+\*(lq\*(bR\fP\*(lq\*(bBsystemd\*(lq\*(bR
+\*(lq\*(bR\fP\*(lq\*(bBInvestigating\*(lq\*(bR
+\*(lq\*(bR\fP\*(lq\*(bBfailed\*(lq\*(bR
+\*(lq\*(bR\fP\*(lq\*(bBservices\*(lq\*(bR
+
+.SH "NAME
+Investigating failed services
+
+.SH "DESCRIPTION"
+When a service fails to start, you can use systemctl status to get details.
+
+.SH "SEE ALSO"
+\*(lq\*(bRsystemd\*(lq\*(bR\-status\*(lq\*(bR
+
+.SH "NAME
+Diagnosing boot problems
+
+.SH "DESCRIPTION"
+Use \fBjournalctl\*(lq\*(bR to get details of the system boot.
+
+.SH "NAME
+Diagnosing a systemd-provided service
+
+.SH "DESCRIPTION"
+Use \fBsystemctl\*(lq\*(bR to get details of the service.
+
+.SH "NAME
+manually renewing LoaderDevicePartUUID after changing EFI partition UUID
+
+.SH "DESCRIPTION"
+Use the \fBudevadm\*(lq\*(bR command to renew the LoaderDevicePartUUID.
+
+.SH "NAME
+Disable emergency mode on remote machine
+
+.SH "DESCRIPTION"
+Use the \fBsystemctl\*(lq\*(bR with \fB--disable\*(lq\*(bR option to disable emergency mode.
+
+.SH "NAME
+manually renewing LoaderDevicePartUUID after changing EFI partition UUID
+
+.SH "NAME
+See also
+
+.SH "DESCRIPTION"
+\*(lq\*(bR\fP\*(lq\*(bBsystemd/User\*(lq\*(bR
+\*(lq\*(bR\fP\*(lq\*(bBsystemd/Timers\*(lq\*(bR
+\*(lq\*(bR\fP\*(lq\*(bBsystemd/Journal\*(lq\*(bR
+\*(lq\*(bR\fP\*(lq\*(bBsystemd/Sandboxing\*(lq\*(bR
+\*(lq\*(bR\fP\*(lq\*(bBsystemd/FAQ\*(lq\*(bR
+\*(lq\*(bR\fP\*(lq\*(bBinit\*(lq\*(bR
+\*(lq\*(bR\fP\*(lq\*(bBudev\*(lq\*(bR
+\*(lq\*(bR\fP\*(lq\*(bBImproving\*(lq\*(bR
+\*(lq\*(bR\fP\*(lq\*(bBPerformance/Boot\*(lq\*(bR
+\*(lq\*(bR\fP\*(lq\*(bBAllow\*(lq\*(bR
+\*(lq\*(bR\fP\*(lq\*(bBusers\*(lq\*(bR
+\*(lq\*(bR\fP\*(lq\*(bBshutdown\*(lq\*(bR
+
+.SH "NAME
+systemd
+
+.SH "DESCRIPTION"
+systemd is a suite of basic building blocks for a Linux system.
+Note: The above man page is a direct translation of the given text and might need some editing to match the man page style and format.

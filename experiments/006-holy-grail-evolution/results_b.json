@@ -1,0 +1,401 @@
+{
+  "A": {
+    "history": [
+      {
+        "best": 20,
+        "mean": 1.25,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 20,
+        "mean": 1.25,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 20,
+        "mean": 1.25,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 20,
+        "mean": 1.25,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 20,
+        "mean": 2.19,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 20,
+        "mean": 2.19,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 20,
+        "mean": 2.19,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 20,
+        "mean": 2.19,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 20,
+        "mean": 2.19,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 20,
+        "mean": 2.19,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 20,
+        "mean": 2.19,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 20,
+        "mean": 2.19,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 20,
+        "mean": 2.81,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 20,
+        "mean": 2.81,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 20,
+        "mean": 2.81,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 20,
+        "mean": 2.81,
+        "distinct_rate": 1.0
+      }
+    ],
+    "valid_rates": [
+      0.0,
+      0.0,
+      0.0,
+      0.062,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.062,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "final_best": 20,
+    "champions": [
+      [
+        "Physicists pondered the quantum properties of zebra's unusual velvet paw patterns.",
+        20
+      ],
+      [
+        "Physicists painstakingly pursued precise quantum measurements of zebra's intriguing patterns.",
+        15
+      ],
+      [
+        "The physicist wore a peculiarly patterned, plush, purple, velvet suit to work.",
+        10
+      ],
+      [
+        "The physicist carefully observed a rare striped zebra sitting on a plush, quiet velvet sofa.",
+        0
+      ],
+      [
+        "The puzzled physicist pondered a peculiar zebra wearing a luxurious velvet cloak suddenly.",
+        0
+      ]
+    ]
+  },
+  "B": {
+    "history": [
+      {
+        "best": 11,
+        "mean": 0.69,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 0,
+        "mean": 0,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 0,
+        "mean": 0,
+        "distinct_rate": 0.938
+      },
+      {
+        "best": 0,
+        "mean": 0,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 0,
+        "mean": 0,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 0,
+        "mean": 0,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 0,
+        "mean": 0,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 0,
+        "mean": 0,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 0,
+        "mean": 0,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 0,
+        "mean": 0,
+        "distinct_rate": 0.938
+      },
+      {
+        "best": 0,
+        "mean": 0,
+        "distinct_rate": 0.938
+      },
+      {
+        "best": 0,
+        "mean": 0,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 0,
+        "mean": 0,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 0,
+        "mean": 0,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 0,
+        "mean": 0,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 0,
+        "mean": 0,
+        "distinct_rate": 1.0
+      }
+    ],
+    "valid_rates": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.062,
+      0.062,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "final_best": 0,
+    "champions": [
+      [
+        "Plush physicists painstakingly perfect precisely proportioned priceless patterns on a prized quantum zebra's velvet patches.",
+        0
+      ],
+      [
+        "Pharmacists precisely packed peculiar, plush, pale, pink, pure velvet cloaks for puzzled physicists' quirky quantum experiment.",
+        0
+      ],
+      [
+        "Physicists painstakingly patterned a zebra with precise, priceless, plush, purple, and perfectly proportioned quantum velvet patches, purchased periodically locally prized.",
+        0
+      ],
+      [
+        "Physicists painstakingly painted a zebra with patches of quantum velvet, purchased periodically, for peculiar, peaceful pastures.",
+        0
+      ],
+      [
+        "Pharmacists precisely packed peculiar, plush, pink, velvet cloaks for physicists working on quirky quantum experiments in peaceful pastures nearby with a zebra.",
+        0
+      ]
+    ]
+  },
+  "C": {
+    "history": [
+      {
+        "best": 0,
+        "mean": 0,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 0,
+        "mean": 0,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 0,
+        "mean": 0,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 0,
+        "mean": 0,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 0,
+        "mean": 0,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 0,
+        "mean": 0,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 0,
+        "mean": 0,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 0,
+        "mean": 0,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 0,
+        "mean": 0,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 0,
+        "mean": 0,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 0,
+        "mean": 0,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 0,
+        "mean": 0,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 0,
+        "mean": 0,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 0,
+        "mean": 0,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 16,
+        "mean": 1,
+        "distinct_rate": 1.0
+      },
+      {
+        "best": 17,
+        "mean": 1.06,
+        "distinct_rate": 1.0
+      }
+    ],
+    "valid_rates": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.062,
+      0.062
+    ],
+    "final_best": 17,
+    "champions": [
+      [
+        "Peculiar physicists persistently probed the perplexing properties of plush, quantum, zebra coats.",
+        17
+      ],
+      [
+        "A team of precise physicists puzzled over the precise pattern on a prized, mysterious velvet zebra.",
+        0
+      ],
+      [
+        "Painters painstakingly placed plush, petite, precious, and pretty, pale, paleontology quantum zebra figurines patiently on a peaceful, pastel-patterned palette.",
+        0
+      ],
+      [
+        "The puzzled physicist carefully analyzed peculiar patterns on a plush, pale purple quantum zebra's velvety paws.",
+        0
+      ],
+      [
+        "The puzzled physicist pored over peculiar properties of quantum vibrations on plush velvet zebra surfaces.",
+        0
+      ]
+    ]
+  },
+  "D": {
+    "budget": 256,
+    "best": 20,
+    "best_text": "The puzzled physicist precisely painted pictures of a zebra on velvet quantum.",
+    "top5": [
+      [
+        20,
+        "The puzzled physicist precisely painted pictures of a zebra on velvet quantum."
+      ],
+      [
+        20,
+        "The peculiar zebra wore a peculiarly plush, pale purple velvet quantum cloak."
+      ],
+      [
+        20,
+        "Physicists predict that a quantum zebra in velvet pajamas is particularly peaceful."
+      ],
+      [
+        20,
+        "Physicists pondered peculiar quantum properties while watching a zebra in velvet paintings."
+      ],
+      [
+        19,
+        "The puzzled zebra wore a beautiful plush purple velvet quantum physics jacket."
+      ]
+    ]
+  }
+}

@@ -1,0 +1,98 @@
+[
+  {
+    "subject": "a lighthouse in a storm",
+    "refine_gen0": 3.863,
+    "refine_final": 4.918,
+    "sample_best": 4.962
+  },
+  {
+    "subject": "an abandoned train station",
+    "refine_gen0": 3.0,
+    "refine_final": 5.83,
+    "sample_best": 5.0
+  },
+  {
+    "subject": "the last tree in a desert",
+    "refine_gen0": 2.906,
+    "refine_final": 5.786,
+    "sample_best": 3.0
+  },
+  {
+    "subject": "a clockmaker's workshop",
+    "refine_gen0": 2.0,
+    "refine_final": 2.88,
+    "sample_best": 3.886
+  },
+  {
+    "subject": "a whale surfacing at dawn",
+    "refine_gen0": 1.914,
+    "refine_final": 0.687,
+    "sample_best": 3.0
+  },
+  {
+    "subject": "a city street after rain",
+    "refine_gen0": 6.0,
+    "refine_final": 4.907,
+    "sample_best": 5.967
+  },
+  {
+    "subject": "a beekeeper at dusk",
+    "refine_gen0": 1.969,
+    "refine_final": 1.821,
+    "sample_best": 3.966
+  },
+  {
+    "subject": "a shipwreck on the seabed",
+    "refine_gen0": 2.969,
+    "refine_final": 4.777,
+    "sample_best": 5.964
+  },
+  {
+    "subject": "a market at midnight",
+    "refine_gen0": 3.0,
+    "refine_final": 5.892,
+    "sample_best": 3.94
+  },
+  {
+    "subject": "a glacier calving",
+    "refine_gen0": 2.888,
+    "refine_final": 2.796,
+    "sample_best": 3.882
+  },
+  {
+    "subject": "a violinist on a rooftop",
+    "refine_gen0": 3.956,
+    "refine_final": 3.818,
+    "sample_best": 3.895
+  },
+  {
+    "subject": "a lantern in a mine",
+    "refine_gen0": 2.971,
+    "refine_final": 4.824,
+    "sample_best": 5.937
+  },
+  {
+    "subject": "a fox in the snow",
+    "refine_gen0": 2.96,
+    "refine_final": 2.96,
+    "sample_best": 3.938
+  },
+  {
+    "subject": "a greenhouse in winter",
+    "refine_gen0": 6.0,
+    "refine_final": 5.654,
+    "sample_best": 5.0
+  },
+  {
+    "subject": "a diver in a kelp forest",
+    "refine_gen0": 1.969,
+    "refine_final": 1.848,
+    "sample_best": 5.0
+  },
+  {
+    "subject": "a blacksmith's forge",
+    "refine_gen0": 1.906,
+    "refine_final": 4.737,
+    "sample_best": 5.917
+  }
+]

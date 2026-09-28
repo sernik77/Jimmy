@@ -1,0 +1,163 @@
+{
+  "1_determinism": {
+    "unique_of_5": 1,
+    "identical": true,
+    "sample": "Paris"
+  },
+  "2_diversity": {
+    "topk1_distinct_rate": 0.15,
+    "topk8_distinct_rate": 1.0,
+    "diversity_usable": true
+  },
+  "3_topk_cap": {
+    "topk_8": {
+      "ok": true,
+      "reported_topk": 8,
+      "error": null,
+      "content": "Hello! How can I help you today?"
+    },
+    "topk_16": {
+      "ok": false,
+      "reported_topk": null,
+      "error": "HTTPStatusError: Server error '500 Internal Server Error' for url 'https://chatjimmy.ai/api/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500",
+      "content": ""
+    },
+    "topk_64": {
+      "ok": false,
+      "reported_topk": null,
+      "error": "HTTPStatusError: Server error '500 Internal Server Error' for url 'https://chatjimmy.ai/api/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500",
+      "content": ""
+    },
+    "topk_200": {
+      "ok": false,
+      "reported_topk": null,
+      "error": "HTTPStatusError: Server error '500 Internal Server Error' for url 'https://chatjimmy.ai/api/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500",
+      "content": ""
+    }
+  },
+  "4_params": {
+    "temperature_low": {
+      "ok": true,
+      "tokens": 62,
+      "content": "1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20",
+      "error": null
+    },
+    "temperature_high": {
+      "ok": true,
+      "tokens": 77,
+      "content": "Here is the count from 1 to 20, separated by spaces:\n\n1 2 3 ",
+      "error": null
+    },
+    "seed": {
+      "ok": true,
+      "tokens": 62,
+      "content": "1\n2\n4\n5\n7\n8\n9\n10\n11\n13\n14\n15\n17\n18\n19\n20\n\n(I'll stop at 20)",
+      "error": null
+    },
+    "max_tokens_5": {
+      "ok": true,
+      "tokens": 77,
+      "content": "Here is the count from 1 to 20, separated by spaces:\n\n1 \n2 \n",
+      "error": null
+    },
+    "stop_token": {
+      "ok": true,
+      "tokens": 62,
+      "content": "1 \n2 \n3 \n4 \n5 \n6 \n7 \n8 \n9 \n10 \n11 \n12 \n13 \n14 \n15 \n16 \n17 \n1",
+      "error": null
+    },
+    "seed_reproducible": true,
+    "max_tokens_effective": 77
+  },
+  "5_models": {
+    "llama3.1-8B": {
+      "ok": true,
+      "content": "Hello! How can I help you today?",
+      "error": null
+    },
+    "llama3.1-70B": {
+      "ok": true,
+      "content": "Hello! How can I help you today?",
+      "error": null
+    },
+    "llama3.2": {
+      "ok": true,
+      "content": "Hello! Is there anything I can help you with?",
+      "error": null
+    },
+    "gpt-4": {
+      "ok": true,
+      "content": "Hello! How can I help you today?",
+      "error": null
+    },
+    "mistral": {
+      "ok": true,
+      "content": "Hello! How can I help you today?",
+      "error": null
+    }
+  },
+  "6_context": {
+    "~500tok": {
+      "ok": true,
+      "prefill_tokens": 524,
+      "content": "7",
+      "error": null
+    },
+    "~2000tok": {
+      "ok": true,
+      "prefill_tokens": 2024,
+      "content": "7",
+      "error": null
+    },
+    "~8000tok": {
+      "ok": true,
+      "prefill_tokens": null,
+      "content": "",
+      "error": null
+    },
+    "~16000tok": {
+      "ok": true,
+      "prefill_tokens": null,
+      "content": "",
+      "error": null
+    },
+    "~32000tok": {
+      "ok": true,
+      "prefill_tokens": null,
+      "content": "",
+      "error": null
+    }
+  },
+  "7_cache": {
+    "first_ms": 4.756,
+    "second_ms": 5.179,
+    "cached": false
+  },
+  "8_concurrency": {
+    "conc_2": {
+      "req_per_s": 12.5,
+      "errors": 0,
+      "wall_s": 1.594
+    },
+    "conc_4": {
+      "req_per_s": 2.6,
+      "errors": 0,
+      "wall_s": 7.841
+    },
+    "conc_8": {
+      "req_per_s": 0.3,
+      "errors": 4,
+      "wall_s": 60.105
+    },
+    "conc_16": {
+      "req_per_s": 0.3,
+      "errors": 12,
+      "wall_s": 60.104
+    },
+    "conc_32": {
+      "req_per_s": 2.5,
+      "errors": 0,
+      "wall_s": 7.905
+    }
+  }
+}

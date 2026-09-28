@@ -1,0 +1,72 @@
+{
+  "tar": {
+    "ARM_B": {
+      "renders": true,
+      "compliant": true,
+      "n_examples": 6,
+      "format_detail": {
+        "h1_ok": true,
+        "has_desc": true,
+        "n_examples": 6,
+        "examples_ok": true,
+        "has_placeholders": true,
+        "cmds_start_with_name": true,
+        "compliant": true
+      },
+      "faithfulness": 1.0,
+      "coverage_vs_canonical": 0.0
+    },
+    "ARM_A": {
+      "renders": true,
+      "compliant": false,
+      "n_examples": 0,
+      "format_detail": {
+        "h1_ok": true,
+        "has_desc": true,
+        "n_examples": 0,
+        "examples_ok": false,
+        "has_placeholders": false,
+        "cmds_start_with_name": true,
+        "compliant": false
+      },
+      "faithfulness": 1.0,
+      "coverage_vs_canonical": 0.0
+    },
+    "n_canonical_examples": 6
+  },
+  "journalctl": {
+    "ARM_B": {
+      "renders": true,
+      "compliant": false,
+      "n_examples": 0,
+      "format_detail": {
+        "h1_ok": true,
+        "has_desc": true,
+        "n_examples": 0,
+        "examples_ok": false,
+        "has_placeholders": false,
+        "cmds_start_with_name": false,
+        "compliant": false
+      },
+      "faithfulness": null,
+      "coverage_vs_canonical": 0.0
+    },
+    "ARM_A": {
+      "renders": true,
+      "compliant": false,
+      "n_examples": 0,
+      "format_detail": {
+        "h1_ok": true,
+        "has_desc": true,
+        "n_examples": 0,
+        "examples_ok": false,
+        "has_placeholders": false,
+        "cmds_start_with_name": true,
+        "compliant": false
+      },
+      "faithfulness": 1.0,
+      "coverage_vs_canonical": 0.0
+    },
+    "n_canonical_examples": 8
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "doc_tokens": 15843,
+  "n_gold": 24,
+  "single_shot_recall": 0.0,
+  "single_prefill": null,
+  "map_reduce_recall": 1.0,
+  "lift_points": 100.0,
+  "n_chunks": 33,
+  "KEEP": true,
+  "map_reduce_missed": []
+}

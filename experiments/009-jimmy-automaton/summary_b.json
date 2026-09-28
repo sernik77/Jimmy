@@ -1,0 +1,60 @@
+{
+  "REAL_delta_2ndhalf": -0.3536,
+  "CTRL_delta_2ndhalf": 0.0,
+  "REAL_activity_2ndhalf": 1.0,
+  "REAL_entropy_2ndhalf": 1.4929,
+  "REAL_offmenu_2ndhalf": 0.0,
+  "structure_emerged": false,
+  "REAL_cycle": true,
+  "final_grid_REAL": [
+    [
+      "ocean",
+      "cloud",
+      "ocean",
+      "cloud",
+      "ocean",
+      "cloud"
+    ],
+    [
+      "cloud",
+      "ocean",
+      "cloud",
+      "ocean",
+      "cloud",
+      "ocean"
+    ],
+    [
+      "ocean",
+      "bread",
+      "ocean",
+      "bread",
+      "ocean",
+      "bread"
+    ],
+    [
+      "bread",
+      "ocean",
+      "bread",
+      "ocean",
+      "bread",
+      "ocean"
+    ],
+    [
+      "ocean",
+      "bread",
+      "ocean",
+      "cloud",
+      "ocean",
+      "bread"
+    ],
+    [
+      "cloud",
+      "ocean",
+      "cloud",
+      "ocean",
+      "cloud",
+      "ocean"
+    ]
+  ],
+  "n_final_distinct_REAL": 3
+}

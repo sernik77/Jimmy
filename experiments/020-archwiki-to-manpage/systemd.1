@@ -1,0 +1,79 @@
+.TH SYSTEMD 1 "2026-09-23" "jimmy-generated" "User Commands"
+.SH NAME
+systemd \- Linux system and service manager for the entire system
+.SH DESCRIPTION
+Systemd is a system and service manager for Linux-based operating systems that provides a way to manage services and units through a hierarchical system of dependencies and priorities. It runs as the first process on the system, providing parallelization, socket and D-Bus activation, and transactional dependency-based service control logic. The system includes a logging daemon, utilities for controlling system configuration, and daemons for managing network configuration, time synchronization, and log forwarding. It provides tools like systemctl and systemd-analyze to inspect and verify the system state, and allows users to create custom service files in various locations on the system. Systemd also offers a way to edit and modify existing service files through mechanisms like drop-in files and replacement units, providing users with flexibility in configuring and controlling system behavior. By providing a comprehensive management system, systemd simplifies system maintenance and troubleshooting, and improves overall system performance and stability.
+.SH COMMANDS
+.TP
+.B systemctl
+List and/or manipulate the state of the system.
+.TP
+.B systemd-analyze
+Inspect or verify the work of systemd.
+.TP
+.B systemctl list-units
+List all known units in the user's session or on the system.
+.TP
+.B systemd-analyze cat-config
+Inspect or verify the work of systemd.
+.TP
+.B systemctl edit
+Edit the unit file.
+.TP
+.B systemctl edit --full
+Edit the unit file and all its associated drop-in files.
+.TP
+.B systemctl edit --drop-in=drop_in_name
+Edit the drop-in file for a unit.
+.TP
+.B systemctl daemon-reload
+Reload the systemd daemon.
+.TP
+.B systemctl revert
+Revert any changes made to a unit.
+.TP
+.B systemctl list-units --type=target
+List all known targets.
+.TP
+.B systemctl isolate
+Isolate the current target and all its units.
+.TP
+.B systemctl set-default
+Set the default target to boot into.
+.TP
+.B systemctl get-default
+Get the current default target.
+.TP
+.B systemd-delta
+See which unit files have been overridden or extended and what exactly has been changed.
+.TP
+.B systemctl cat unit
+View the content of a unit file and all associated drop-in snippets.
+.TP
+.B systemd.service
+View the service unit file.
+.TP
+.B systemd unit
+View the unit file with all its associated drop-in files.
+.TP
+.B systemd unit --drop-in=drop_in_name
+View the drop-in file for a unit.
+.TP
+.B systemd unit --full unit
+View the unit file and all its associated drop-in files.
+.TP
+.B systemd unit --runtime
+Create a new unit file with runtime changes.
+.SH "SEE ALSO"
+.BR daemon (7),
+.BR systemctl (1),
+.BR systemd.unit (5),
+.BR systemd-soft-reboot.service (8),
+.BR systemd-escape (1),
+.BR systemd.service (5),
+.BR systemd-analyze (1),
+.BR systemd.exec (5),
+.BR systemd-logind (8),
+.BR systemd-run (1),
+.BR systemd-stub (7),
+.BR systemd-sysusers (8)

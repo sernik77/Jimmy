@@ -1,0 +1,298 @@
+{
+  "per_round": [
+    {
+      "round": 0,
+      "accept_rate": 0.188,
+      "dup_in_window": 0,
+      "dup_out_window": 13,
+      "malformed": 0,
+      "total_unique": 3
+    },
+    {
+      "round": 1,
+      "accept_rate": 0.125,
+      "dup_in_window": 14,
+      "dup_out_window": 0,
+      "malformed": 0,
+      "total_unique": 5
+    },
+    {
+      "round": 2,
+      "accept_rate": 0.188,
+      "dup_in_window": 11,
+      "dup_out_window": 2,
+      "malformed": 0,
+      "total_unique": 8
+    },
+    {
+      "round": 3,
+      "accept_rate": 0.25,
+      "dup_in_window": 12,
+      "dup_out_window": 0,
+      "malformed": 0,
+      "total_unique": 12
+    },
+    {
+      "round": 4,
+      "accept_rate": 0.5,
+      "dup_in_window": 8,
+      "dup_out_window": 0,
+      "malformed": 0,
+      "total_unique": 20
+    },
+    {
+      "round": 5,
+      "accept_rate": 0.062,
+      "dup_in_window": 15,
+      "dup_out_window": 0,
+      "malformed": 0,
+      "total_unique": 21
+    },
+    {
+      "round": 6,
+      "accept_rate": 0.0,
+      "dup_in_window": 16,
+      "dup_out_window": 0,
+      "malformed": 0,
+      "total_unique": 21
+    },
+    {
+      "round": 7,
+      "accept_rate": 0.0,
+      "dup_in_window": 16,
+      "dup_out_window": 0,
+      "malformed": 0,
+      "total_unique": 21
+    },
+    {
+      "round": 8,
+      "accept_rate": 0.062,
+      "dup_in_window": 15,
+      "dup_out_window": 0,
+      "malformed": 0,
+      "total_unique": 22
+    },
+    {
+      "round": 9,
+      "accept_rate": 0.0,
+      "dup_in_window": 16,
+      "dup_out_window": 0,
+      "malformed": 0,
+      "total_unique": 22
+    },
+    {
+      "round": 10,
+      "accept_rate": 0.0,
+      "dup_in_window": 16,
+      "dup_out_window": 0,
+      "malformed": 0,
+      "total_unique": 22
+    },
+    {
+      "round": 11,
+      "accept_rate": 0.0,
+      "dup_in_window": 16,
+      "dup_out_window": 0,
+      "malformed": 0,
+      "total_unique": 22
+    },
+    {
+      "round": 12,
+      "accept_rate": 0.0,
+      "dup_in_window": 16,
+      "dup_out_window": 0,
+      "malformed": 0,
+      "total_unique": 22
+    },
+    {
+      "round": 13,
+      "accept_rate": 0.312,
+      "dup_in_window": 11,
+      "dup_out_window": 0,
+      "malformed": 0,
+      "total_unique": 27
+    },
+    {
+      "round": 14,
+      "accept_rate": 0.062,
+      "dup_in_window": 15,
+      "dup_out_window": 0,
+      "malformed": 0,
+      "total_unique": 28
+    },
+    {
+      "round": 15,
+      "accept_rate": 0.25,
+      "dup_in_window": 12,
+      "dup_out_window": 0,
+      "malformed": 0,
+      "total_unique": 32
+    },
+    {
+      "round": 16,
+      "accept_rate": 0.0,
+      "dup_in_window": 16,
+      "dup_out_window": 0,
+      "malformed": 0,
+      "total_unique": 32
+    },
+    {
+      "round": 17,
+      "accept_rate": 0.0,
+      "dup_in_window": 16,
+      "dup_out_window": 0,
+      "malformed": 0,
+      "total_unique": 32
+    },
+    {
+      "round": 18,
+      "accept_rate": 0.0,
+      "dup_in_window": 16,
+      "dup_out_window": 0,
+      "malformed": 0,
+      "total_unique": 32
+    },
+    {
+      "round": 19,
+      "accept_rate": 0.062,
+      "dup_in_window": 15,
+      "dup_out_window": 0,
+      "malformed": 0,
+      "total_unique": 33
+    }
+  ],
+  "items": [
+    [
+      "name",
+      "Zrhk'Thik, trait: Large, iridescent, flying creatures with four glowing tentacles."
+    ],
+    [
+      "hereisanewcreature",
+      ""
+    ],
+    [
+      "heresabrandnewone",
+      ""
+    ],
+    [
+      "zhilakian",
+      "has a translucent, gelatinous body."
+    ],
+    [
+      "gleeblox",
+      "possesses iridescent skin membranes"
+    ],
+    [
+      "flargle",
+      "has an extremely vibrant and iridescent aura."
+    ],
+    [
+      "nexarion",
+      "possesses iridescent, luminescent skin"
+    ],
+    [
+      "xylonix",
+      "has a bioluminescent shell on its back that glows with a soft blue light."
+    ],
+    [
+      "zhathikhasagelatinousexoskeleton",
+      ""
+    ],
+    [
+      "zhilakionisoneofthenamesonthelistsoletsinventanewonethatsdifferenthereisanewcreature",
+      ""
+    ],
+    [
+      "zhilakianwingedquadrupedwithrazorsharpquills",
+      ""
+    ],
+    [
+      "zhilixi",
+      "possess a bioluminescent, iridescent, skin-sheen shield."
+    ],
+    [
+      "kaelmoxon",
+      "has iridescent, crystalline carapace that refracts light."
+    ],
+    [
+      "zhilakianisnotonthelistsoillstartbyinventingacreaturethatresemblesit",
+      ""
+    ],
+    [
+      "kraelor",
+      "A creature with a crystalline exoskeleton and iridescent wing-like appendages."
+    ],
+    [
+      "torvitokhasabioluminescentdorsalfinlikegrowthonitshead",
+      ""
+    ],
+    [
+      "borvus",
+      "A towering, iridescent, crystalline, flying creature."
+    ],
+    [
+      "kaleekorvax",
+      "has a slender, iridescent, jellyfish-like tail."
+    ],
+    [
+      "borvoxhasagelatinousiridescentexoskeleton",
+      ""
+    ],
+    [
+      "kraalox",
+      "possessable crystalline armor-plating"
+    ],
+    [
+      "korvathys",
+      "a sentient, luminescent, iridescent, jellyfish-like creature."
+    ],
+    [
+      "flumplort",
+      "Has a gelatinous, iridescent, and bioluminescent exoskeleton."
+    ],
+    [
+      "glorbix",
+      "iridescent, crystalline, bioluminescent, shape-shifting scales."
+    ],
+    [
+      "zhilakianisonthelistheresanewcreature",
+      ""
+    ],
+    [
+      "zhilaxys",
+      "has razor-sharp, iridescent, luminescent, bioluminescent tail."
+    ],
+    [
+      "zhilakioshasatransparentgelatinousbody",
+      ""
+    ],
+    [
+      "glintzen",
+      "possesses an ability to reflect and amplify light through its iridescent, crystalline skin."
+    ],
+    [
+      "gronktik",
+      "has a slender, wispy tail and a tendency to change its body shape to mimic inanimate objects."
+    ],
+    [
+      "nuvolixhasacrystallineiridescentgelatinousbody",
+      ""
+    ],
+    [
+      "korvathyshasaglisteningiridescentexoskeleton",
+      ""
+    ],
+    [
+      "aerorin",
+      "has a bioluminescent, wing-like appendage."
+    ],
+    [
+      "kalixihasaglowingcrystallinebioluminousshell",
+      ""
+    ],
+    [
+      "nexarionwasleftoutname",
+      "Flumplorka has a softgelatinous body."
+    ]
+  ]
+}

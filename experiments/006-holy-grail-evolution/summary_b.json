@@ -1,0 +1,52 @@
+{
+  "A_best": 20,
+  "B_best": 0,
+  "C_best": 17,
+  "D_best": 20,
+  "emergence": false,
+  "selection_matters": true,
+  "champions_A": [
+    [
+      "Physicists pondered the quantum properties of zebra's unusual velvet paw patterns.",
+      20
+    ],
+    [
+      "Physicists painstakingly pursued precise quantum measurements of zebra's intriguing patterns.",
+      15
+    ],
+    [
+      "The physicist wore a peculiarly patterned, plush, purple, velvet suit to work.",
+      10
+    ],
+    [
+      "The physicist carefully observed a rare striped zebra sitting on a plush, quiet velvet sofa.",
+      0
+    ],
+    [
+      "The puzzled physicist pondered a peculiar zebra wearing a luxurious velvet cloak suddenly.",
+      0
+    ]
+  ],
+  "control_top5": [
+    [
+      20,
+      "The puzzled physicist precisely painted pictures of a zebra on velvet quantum."
+    ],
+    [
+      20,
+      "The peculiar zebra wore a peculiarly plush, pale purple velvet quantum cloak."
+    ],
+    [
+      20,
+      "Physicists predict that a quantum zebra in velvet pajamas is particularly peaceful."
+    ],
+    [
+      20,
+      "Physicists pondered peculiar quantum properties while watching a zebra in velvet paintings."
+    ],
+    [
+      19,
+      "The puzzled zebra wore a beautiful plush purple velvet quantum physics jacket."
+    ]
+  ]
+}

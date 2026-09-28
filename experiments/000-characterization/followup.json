@@ -1,0 +1,98 @@
+{
+  "context": {
+    "2000": {
+      "ok": true,
+      "prefill": 2025,
+      "content_len": 351,
+      "got_7": false,
+      "content": "It appears that the text is a repetitive and meani",
+      "err": null
+    },
+    "3000": {
+      "ok": true,
+      "prefill": 3025,
+      "content_len": 245,
+      "got_7": false,
+      "content": "It appears that the text is a repetition of the sa",
+      "err": null
+    },
+    "4000": {
+      "ok": true,
+      "prefill": 4025,
+      "content_len": 407,
+      "got_7": false,
+      "content": "I can't fulfill your request. The text you provide",
+      "err": null
+    },
+    "5000": {
+      "ok": true,
+      "prefill": 5025,
+      "content_len": 201,
+      "got_7": false,
+      "content": "It appears that the text is a repetition of the sa",
+      "err": null
+    },
+    "6000": {
+      "ok": true,
+      "prefill": 6025,
+      "content_len": 27,
+      "got_7": false,
+      "content": "I can't help you with that.",
+      "err": null
+    },
+    "8000": {
+      "ok": true,
+      "prefill": null,
+      "content_len": 0,
+      "got_7": false,
+      "content": "",
+      "err": null
+    },
+    "12000": {
+      "ok": true,
+      "prefill": null,
+      "content_len": 0,
+      "got_7": false,
+      "content": "",
+      "err": null
+    }
+  },
+  "concurrency": {
+    "1": {
+      "req_per_s": 7.4,
+      "errors": 0,
+      "p50_ms": 134,
+      "p95_ms": 137
+    },
+    "2": {
+      "req_per_s": 14.0,
+      "errors": 0,
+      "p50_ms": 134,
+      "p95_ms": 136
+    },
+    "3": {
+      "req_per_s": 18.5,
+      "errors": 0,
+      "p50_ms": 135,
+      "p95_ms": 381
+    },
+    "4": {
+      "req_per_s": 24.4,
+      "errors": 0,
+      "p50_ms": 135,
+      "p95_ms": 383
+    },
+    "6": {
+      "req_per_s": 32.4,
+      "errors": 0,
+      "p50_ms": 134,
+      "p95_ms": 392
+    },
+    "8": {
+      "req_per_s": 37.8,
+      "errors": 0,
+      "p50_ms": 134,
+      "p95_ms": 402
+    }
+  }
+}

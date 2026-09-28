@@ -1,0 +1,76 @@
+{
+  "L0": {
+    "n": 16,
+    "balanced_acc": 0.875,
+    "recall_True": 0.875,
+    "recall_False": 0.875,
+    "raw_acc": 0.875,
+    "jimmy_true_rate": 0.5
+  },
+  "L1": {
+    "n": 16,
+    "balanced_acc": 0.625,
+    "recall_True": 0.75,
+    "recall_False": 0.5,
+    "raw_acc": 0.625,
+    "jimmy_true_rate": 0.625
+  },
+  "L2": {
+    "n": 16,
+    "balanced_acc": 0.75,
+    "recall_True": 0.875,
+    "recall_False": 0.625,
+    "raw_acc": 0.75,
+    "jimmy_true_rate": 0.625
+  },
+  "L3": {
+    "n": 16,
+    "balanced_acc": 0.688,
+    "recall_True": 0.625,
+    "recall_False": 0.75,
+    "raw_acc": 0.688,
+    "jimmy_true_rate": 0.438
+  },
+  "L4": {
+    "n": 16,
+    "balanced_acc": 0.625,
+    "recall_True": 0.75,
+    "recall_False": 0.5,
+    "raw_acc": 0.625,
+    "jimmy_true_rate": 0.625
+  },
+  "L5": {
+    "n": 8,
+    "balanced_acc": 0.75,
+    "recall_True": 0.75,
+    "recall_False": 0.75,
+    "raw_acc": 0.75,
+    "jimmy_true_rate": 0.5
+  },
+  "READ_structural": {
+    "n": 4,
+    "acc_vote": 0.75,
+    "detail": [
+      [
+        3,
+        3
+      ],
+      [
+        2,
+        2
+      ],
+      [
+        2,
+        2
+      ],
+      [
+        0,
+        2
+      ]
+    ]
+  },
+  "per_operation_vote": {
+    "evaluate": 0.711,
+    "validate": 0.75
+  }
+}

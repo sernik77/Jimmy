@@ -1,0 +1,8 @@
+{
+  "mean_refine_gen0": 3.142,
+  "mean_refine_final": 4.008,
+  "mean_sample_best": 4.578,
+  "refine_improves_over_gen0": true,
+  "refine_beats_equal_budget_sampling": false,
+  "budget_per_item": 7
+}

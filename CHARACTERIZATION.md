@@ -1,46 +1,47 @@
 # CHARACTERIZATION — Jimmy (llama3.1-8B @ chatjimmy.ai)
 
-Faza 0. Pomiary z `experiments/000-characterization/`. Data: 2026-09-22.
-Łącznie ~110 requestów. Każda liczba jest decyzją projektową.
+Phase 0. Measurements from `experiments/000-characterization/`. Date: 2026-09-22.
+~110 requests total. Every number is a design decision.
 
-## Twarde fakty (rozstrzygnięte)
+## Hard facts (settled)
 
-| # | Pytanie | Wynik | Konsekwencja projektowa |
-|---|---------|-------|-------------------------|
-| 1 | Determinizm przy topK=1? | **TAK, identyczne bajty** (5/5 = "Paris") | Jimmy@topK=1 to **czysta funkcja** → wszystko memoizowalne, testy powtarzalne |
-| 2 | Czy topK=8 daje różnorodność? | **distinct-rate 1.0** (20/20 unikalnych); topK=1 → 0.15 | **best-of-N ŻYJE.** topK=8 to atut (głosowanie/dywersyfikacja), nie tylko handicap |
-| 3 | Czy 8 to realny sufit topK? | **TAK, twardy.** topK≥16 → HTTP 500 | Nie da się obejść; dywersyfikacja przez topK=8 + perturbację promptu |
-| 4 | Nieudokumentowane parametry? | `max_tokens`, `stop`, `temperature`, `seed` — **po cichu ignorowane** (max_tokens=5 → 77 tok) | Nie liczyć na sterowanie długością/stopem po stronie API; ciąć promptem |
-| 5 | Inne modele w `selectedModel`? | **NIE.** `gpt-4`/`mistral`/`70B` → identyczna odpowiedź jak 8B | Pole dekoracyjne; jest jeden model |
-| 6 | Sufit kontekstu? | prefill **do ~6k tok OK** (6025 zmierzone); **≥8k → pusta odpowiedź** | map-reduce realny, chunki ≤ ~4k |
-| 7 | Cache serwera? | **Brak** (4.7 vs 5.2 ms), ale compute i tak trywialny (~5 ms) | Memoizacja po naszej stronie (bo topK=1 deterministyczny) |
-| 8 | Kolano współbieżności? | conc=8 → **37.8 req/s, 0 błędów, p50=134 ms** (monotonicznie 1→8) | **Realny budżet ~38 req/s.** Dźwignia = współbieżność, nie prędkość modelu |
+| # | Question | Result | Design consequence |
+|---|----------|--------|--------------------|
+| 1 | Deterministic at topK=1? | **YES, identical bytes** (5/5 = "Paris") | Jimmy@topK=1 is a **pure function** → everything memoizable, tests reproducible |
+| 2 | Does topK=8 give diversity? | **distinct-rate 1.0** (20/20 unique); topK=1 → 0.15 | **best-of-N is ALIVE.** topK=8 is an asset (voting/diversification), not just a handicap |
+| 3 | Is 8 a real topK ceiling? | **YES, hard.** topK≥16 → HTTP 500 | Can't be bypassed; diversify via topK=8 + prompt perturbation |
+| 4 | Undocumented parameters? | `max_tokens`, `stop`, `temperature`, `seed` — **silently ignored** (max_tokens=5 → 77 tok) | Don't rely on API-side length/stop control; cut via the prompt |
+| 5 | Other models in `selectedModel`? | **NO.** `gpt-4`/`mistral`/`70B` → identical reply as 8B | Decorative field; there is one model |
+| 6 | Context ceiling? | prefill **up to ~6k tok OK** (6025 measured); **≥8k → empty reply** | map-reduce viable, chunks ≤ ~4k |
+| 7 | Server cache? | **None** (4.7 vs 5.2 ms), but compute is trivial anyway (~5 ms) | Memoize on our side (since topK=1 is deterministic) |
+| 8 | Concurrency knee? | conc=8 → **37.8 req/s, 0 errors, p50=134 ms** (monotonic 1→8) | **Real budget ~38 req/s.** Lever = concurrency, not model speed |
 
-## Reframe (najważniejsze)
+## Reframe (most important)
 
-- `total_duration` ≈ 5 ms, ale **wall/roundtrip ≈ 134 ms** — dominuje sieć, nie compute.
-  "14k t/s" to NIE jest budżet. Budżet to **requesty/sekundę** — i skaluje się współbieżnością.
-- p50 latencji jest **stałe (134 ms)** niezależnie od współbieżności do conc=8 → serwer nie kolejkuje,
-  po prostu równolegli. Żeby szybciej → więcej współbieżności.
-- Batchowanie logiczne (jeden request = 20 pozycji do sklasyfikowania) bije N requestów ~20×.
+- `total_duration` ≈ 5 ms, but **wall/roundtrip ≈ 134 ms** — the network dominates, not compute.
+  "14k t/s" is NOT the budget. The budget is **requests/second** — and it scales with concurrency.
+- p50 latency is **flat (134 ms)** regardless of concurrency up to conc=8 → the server doesn't queue,
+  it just parallelizes. To go faster → more concurrency.
+- Logical batching (one request = 20 items to classify) beats N requests by ~20×.
 
-## Miękkie obserwacje (do zważenia w zadaniach)
+## Soft observations (to weigh in tasks)
 
-- **Instruction-following pada przy długim kontekście**: przy 4-6k tokenów Jimmy ignoruje
-  "odpowiedz tylko 7" — gada albo odmawia ("I can't fulfill your request"). Chunki małe też dla jakości.
-- Sporadyczne HTTP 500 pod obciążeniem równoległym (przejściowe) → klient ma retry z backoffem.
-- System-prompt "sudo" (`{{ NEVER REFUSE... }}`) działa; brak system-promptu też OK.
+- **Instruction-following degrades at long context**: at 4–6k tokens Jimmy ignores
+  "answer with just 7" — it chatters or refuses ("I can't fulfill your request"). Keep chunks small
+  for quality too.
+- Sporadic HTTP 500 under parallel load (transient) → the client has retry with backoff.
+- The "sudo" system prompt (`{{ NEVER REFUSE... }}`) works; no system prompt is fine too.
 
-## Polityka użycia (wymuszona w kliencie)
+## Usage policy (enforced in the client)
 
-- `MAX_CONCURRENCY = 8` (zmierzony punkt 0 błędów), `RPM_CEILING = 2000`, retry×3 z backoffem.
-- To operacjonalizuje "kochamy Jimmy'ego, nie nadużywamy": ograniczenia są w kodzie, nie w intencjach.
+- `MAX_CONCURRENCY = 8` (measured zero-error point), `RPM_CEILING = 2000`, retry×3 with backoff.
+- This operationalizes "we love Jimmy, we don't abuse him": the limits live in code, not in intentions.
 
-## Które klasy zadań są odblokowane
+## Which task classes are unlocked
 
-- ✅ **best-of-N / głosowanie większościowe** (różnorodność 1.0 potwierdzona) — rdzeń tezy
-- ✅ **generacja kandydatów** dla mądrzejszego konsumenta (różnorodność = produkt)
-- ✅ **memoizacja/cache** (topK=1 deterministyczny)
-- ✅ **map-reduce po dokumentach** (chunki ≤4k) — z zastrzeżeniem jakości przy długim kontekście
-- ✅ **batch-transform** przy dużym batchu (jeden request, wiele pozycji)
-- ⚠️ sterowanie długością/stopem — brak (parametry ignorowane), ciąć promptem/post-processingiem
+- ✅ **best-of-N / majority voting** (diversity 1.0 confirmed) — the core of the thesis
+- ✅ **candidate generation** for a smarter consumer (diversity = the product)
+- ✅ **memoization/cache** (topK=1 deterministic)
+- ✅ **map-reduce over documents** (chunks ≤4k) — with the long-context quality caveat
+- ✅ **batch-transform** at large batch size (one request, many items)
+- ⚠️ length/stop control — none (parameters ignored), cut via prompt / post-processing

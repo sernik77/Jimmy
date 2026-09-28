@@ -13,7 +13,7 @@
 **what such a model is actually good for** — run as a lab, where every idea earns a *number*
 against a pre-declared threshold, and dead ideas are kept with the number that killed them.
 
-🇬🇧 English (default) · 🇵🇱 [Polski](README-PL.md)
+🇬🇧 English (canonical) · 🇵🇱 [Polska wersja na branchu `PL`](https://github.com/sernik77/Jimmy/tree/PL)
 
 ---
 
@@ -147,4 +147,5 @@ back to these limits.
 ---
 
 <sub>Research project. All figures are reproducible from the `run.py` in each experiment folder.
-Language: English is canonical; Polish companions carry the `-PL` suffix.</sub>
+Language: `main` is English (canonical); a Polish snapshot is preserved on the
+[`PL` branch](https://github.com/sernik77/Jimmy/tree/PL).</sub>

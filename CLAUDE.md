@@ -2,95 +2,100 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Czym jest ten projekt
+## What this project is
 
-Projekt badawczy, nie produkt. Bada praktyczne zastosowania **Jimmy'ego** — darmowego,
-nielimitowanego API `llama3.1-8B` (`https://chatjimmy.ai/api/chat`, inferencja ~13k t/s).
-Teza: *Jimmy jest głupi per-próbka, ale niemal darmowy per-próbka — więc głupota jest
-kompensowalna wolumenem wszędzie tam, gdzie weryfikacja jest tańsza niż generacja.* Dźwignią
-jest **współbieżność** (~38 req/s), nie prędkość modelu (dominuje sieć: RTT ~134 ms).
+A research project, not a product. It studies the practical uses of **Jimmy** — a free, unlimited
+`llama3.1-8B` API (`https://chatjimmy.ai/api/chat`, inference ~13k t/s). Thesis: *Jimmy is dumb
+per-sample but nearly free per-sample — so stupidity is compensable by volume everywhere
+verification is cheaper than generation.* The lever is **concurrency** (~38 req/s), not model speed
+(the network dominates: RTT ~134 ms).
 
-Nie jest to repozytorium git. Jedyna zależność runtime to `httpx` (Python 3.14 w środowisku).
+Git repo with a public remote (`sernik77/Jimmy`). The only runtime dependency is `httpx`
+(Python 3.14 in the environment). English is canonical; a Polish snapshot lives on the `PL` branch.
 
-## Uruchamianie
+## Running
 
 ```bash
-python3 -m jimmy.client                              # smoke-test klienta (1 request)
-python3 experiments/NNN-nazwa/run.py                 # pełny eksperyment
+python3 -m jimmy.client                              # client smoke-test (1 request)
+python3 experiments/NNN-name/run.py                  # a full experiment
 ```
 
-Eksperymenty uruchamia się z korzenia repo — każdy `run.py` sam dopina korzeń do `sys.path`
-(`sys.path.insert(0, parents[2])`), po czym `from jimmy.client import JimmyClient`. Wyniki
-(`results*.json(l)`, `summary.json`) zapisują się obok `run.py`. Nie ma testów jednostkowych ani
-lintera — weryfikacją jest sam eksperyment produkujący liczbę względem progu.
+Experiments run from the repo root — each `run.py` inserts the root onto `sys.path` itself
+(`sys.path.insert(0, parents[2])`), then `from jimmy.client import JimmyClient`. Results
+(`results*.json(l)`, `summary.json`) are written next to `run.py`. There are no unit tests and no
+linter — verification is the experiment itself, producing a number against a threshold.
 
-## Architektura
+## Architecture
 
-Dwa cienkie moduły biblioteczne + katalog eksperymentów. Cała wiedza operacyjna jest
-skodyfikowana w klientach i dokumentach — czytaj je, zanim cokolwiek zaprojektujesz.
+Two thin library modules + an experiments directory + a tools directory. All operational knowledge
+is codified in the client and the docs — read them before designing anything.
 
-- **`jimmy/client.py`** — JEDYNE miejsce w projekcie wykonujące HTTP do Jimmy'ego. Async pula
-  (`JimmyClient` jako context manager), semafor współbieżności, miękki sufit RPM, retry×3 z
-  backoffem. Odpowiedź API to **surowy tekst + doklejony blok `<|stats|>...<|/stats|>`** (NIE
-  JSON) — klient rozdziela `content` od `stats` i eksponuje telemetrię (`ttft`, `decode_rate`,
-  `total_tokens`) za darmo. Kluczowe metody: `ask`, `map_prompts` (N różnych promptów równolegle),
-  `sample_n` (N próbek tego samego promptu — rdzeń best-of-N/głosowania). Wszelka nowa komunikacja
-  z API idzie przez ten moduł, nigdy przez surowe `httpx` w eksperymencie.
-- **`jimmy/eval.py`** — tanie **deterministyczne weryfikatory** (materializacja tezy): `extract_json`
-  (Jimmy gada wokół JSON-a — wyłuskuje pierwszy poprawny), `majority_vote`, `distinct_rate`,
-  `filter_by_checker`, `exact_match`/`contains`, `accuracy`. To są „tańsze niż generacja" bramki.
+- **`jimmy/client.py`** — the ONLY place in the project that makes HTTP calls to Jimmy. Async pool
+  (`JimmyClient` as a context manager), concurrency semaphore, soft RPM ceiling, retry×3 with
+  backoff. The API response is **raw text + an appended `<|stats|>...<|/stats|>` block** (NOT JSON)
+  — the client splits `content` from `stats` and exposes telemetry (`ttft`, `decode_rate`,
+  `total_tokens`) for free. Key methods: `ask`, `map_prompts` (N different prompts in parallel),
+  `sample_n` (N samples of one prompt — the core of best-of-N / voting). All new API traffic goes
+  through this module, never through raw `httpx` in an experiment.
+- **`jimmy/eval.py`** — cheap **deterministic verifiers** (the thesis made concrete): `extract_json`
+  (Jimmy chatters around the JSON — pulls out the first valid one), `majority_vote`, `distinct_rate`,
+  `filter_by_checker`, `exact_match`/`contains`, `accuracy`, plus `is_usable`/`is_blank`/
+  `looks_like_refusal` (silent-failure detectors). These are the "cheaper than generation" gates.
 
-- **`tools/`** — praktyczne implementacje jako **komendy shellowe** (wejście z pliku/stdin, wynik na
-  stdout, diagnostyka na stderr). Biorą wzorzec z werdyktem KEEP i pakują go w używalny program.
-  Dzielą `jimmy/` i jego politykę. Konwencje i lista: `tools/README.md`. Różnica względem
-  `experiments/`: narzędzie produkuje użyteczny **wynik**, eksperyment — **liczbę względem progu**.
-  Wykrywaj ciche porażki (`ok=True`, a odpowiedź bezużyteczna): `jimmy.eval.is_usable` (pustka/odmowa)
-  oraz `prefill_tokens` ze statsów (ciche obcięcie kontekstu).
+- **`tools/`** — practical implementations as **shell commands** (input from file/stdin, result on
+  stdout, diagnostics on stderr). They take a pattern with a KEEP verdict and package it into a
+  usable program. They share `jimmy/` and its policy. Conventions and list: `tools/README.md`. The
+  difference from `experiments/`: a tool produces a useful **result**, an experiment a **number
+  against a threshold**. Detect silent failures (`ok=True`, yet the answer is useless):
+  `jimmy.eval.is_usable` (blank/refusal) and `prefill_tokens` from the stats block (silent context
+  truncation).
 
-## Twarde ograniczenia Jimmy'ego (zmierzone, patrz `CHARACTERIZATION.md`)
+## Jimmy's hard limits (measured — see `CHARACTERIZATION.md`)
 
-Te fakty są nieobchodzalne — projektuj wokół nich, nie mierz ich ponownie bez powodu:
+These facts are non-negotiable — design around them, don't re-measure without reason:
 
-- **topK=1 → deterministyczny** (identyczne bajty) ⇒ memoizowalny. **topK=8 → różnorodność 1.0** ⇒
-  best-of-N żyje. **topK≥16 → HTTP 500** (twardy sufit).
-- Parametry `max_tokens`/`stop`/`temperature`/`seed` są **po cichu ignorowane** — długość i stop
-  tnij promptem/post-processingiem, nie API. Pole `selectedModel` jest dekoracyjne (jest jeden model).
-- **Kontekst: prefill do ~6k tok OK, ≥8k → pusta odpowiedź.** Chunki map-reduce ≤ ~4k (bezpiecznie
-  ≤1.2k, bo instruction-following pada przy długim kontekście — Jimmy ignoruje instrukcje albo odmawia).
-- Budżet to **~38 req/s @ conc=8**, nie „14k t/s". p50 latencji stałe (~134 ms) — serwer równolegli,
-  nie kolejkuje; szybciej = więcej współbieżności.
+- **topK=1 → deterministic** (identical bytes) ⇒ memoizable. **topK=8 → distinct-rate 1.0** ⇒
+  best-of-N is alive. **topK ≥ 16 → HTTP 500** (hard ceiling).
+- `max_tokens`/`stop`/`temperature`/`seed` are **silently ignored** — cut length and stop via the
+  prompt / post-processing, not the API. The `selectedModel` field is decorative (there is one model).
+- **Context: prefill up to ~6k tok OK, ≥8k → empty reply.** Map-reduce chunks ≤ ~4k (safely ≤1.2k,
+  because instruction-following collapses at long context — Jimmy ignores instructions or refuses).
+- The budget is **~38 req/s @ conc=8**, not "14k t/s". p50 latency is flat (~134 ms) — the server
+  parallelizes, it doesn't queue; faster = more concurrency.
 
-## Polityka „kochamy Jimmy'ego, nie nadużywamy"
+## Policy "we love Jimmy, we don't abuse him"
 
-Wymuszona w kodzie, nie w intencjach (`jimmy/client.py`): `MAX_CONCURRENCY=8` (zmierzony punkt 0
-błędów), `RPM_CEILING=2000`, retry×3. Nie podnoś tych limitów w eksperymentach.
+Enforced in code, not in intentions (`jimmy/client.py`): `MAX_CONCURRENCY=8` (the measured zero-error
+point), `RPM_CEILING=2000`, retry×3. Do not raise these limits in experiments.
 
-## Metoda pracy: propose → evaluate → dispose → repeat → note
+## Working method: propose → evaluate → dispose → repeat → note
 
-Każdy eksperyment produkuje **liczbę względem zadeklarowanego z góry progu, nie opinię**. Negatywne
-wyniki to połowa produktu — martwy pomysł zostaje z liczbą, która go zabiła (DISPOSE), nie znika.
+Each experiment produces **a number against a pre-declared threshold, not an opinion**. Negative
+results are half the product — a dead idea stays with the number that killed it (DISPOSE), it doesn't
+vanish.
 
-Struktura katalogu eksperymentu (`experiments/NNN-nazwa/`):
-- `hypothesis.md` — teza + **próg zamrożony PRZED uruchomieniem** (pre-rejestracja).
-- `run.py` — kod; drukuje `SUMMARY` i zapisuje `summary.json` + surowe wyniki.
-- `verdict.md` — **KEEP / DISPOSE / PARTIAL** z liczbami, wnioskiem i następnym krokiem.
+Experiment directory layout (`experiments/NNN-name/`):
+- `hypothesis.md` — thesis + **threshold frozen BEFORE running** (pre-registration).
+- `run.py` — code; prints a `SUMMARY` and writes `summary.json` + raw results.
+- `verdict.md` — **KEEP / DISPOSE / PARTIAL** with numbers, a conclusion, and the next step.
 
-Po każdym eksperymencie **dopisz wpis do `LOG.md`** (append-only: data · hipoteza · metryka/próg ·
-wynik · werdykt). Przy wyniku zmieniającym obraz projektu — zaktualizuj też destylat.
+After each experiment **append an entry to `LOG.md`** (append-only: date · hypothesis · metric/
+threshold · result · verdict). For a result that changes the picture of the project — update the
+distillate too.
 
-## Dokumenty — hierarchia prawdy
+## Documents — hierarchy of truth
 
-- **`FINDINGS.md`** — destylat „praw projektu" (np. *wolumen naprawia wariancję, nie bias*;
-  *wolumen pomaga optymalizacji, nie eksploracji*). To sito do oceny KAŻDEGO nowego pomysłu.
-- **`HOLY_GRAIL.md`** — rozstrzygnięcie celu „nieskończonej pętli emergentnej": Graal =
-  **akumulacja** (stan zewnętrzny + presja nowości), nie optymalizacja (tam best-of-N wygrywa).
-  Zawiera zwalidowany przepis na pętlę i nazwaną otwartą granicę (przestrzeń otwarta + miękki checker).
-- **`CHARACTERIZATION.md`** — Faza 0, twarde pomiary (źródło ograniczeń powyżej).
-- **`LOG.md`** — dziennik append-only wszystkich prób.
-- **`README.md`** — skrót dla człowieka.
+- **`FINDINGS.md`** — the distillate of the "project laws" (e.g. *volume fixes variance, not bias*;
+  *volume helps optimization, not exploration*). The sieve for evaluating EVERY new idea.
+- **`HOLY_GRAIL.md`** — the resolution of the "infinite emergent loop" goal: the Grail is
+  **accumulation** (external state + novelty pressure), not optimization (there best-of-N wins).
+  Contains the validated loop recipe and the named open frontier (open space + soft checker).
+- **`CHARACTERIZATION.md`** — Phase 0, the hard measurements (source of the limits above).
+- **`LOG.md`** — the append-only journal of every attempt.
+- **`README.md`** — the human-facing overview (`README-PL.md` on the `PL` branch is the Polish one).
 
-## Uwaga: co NIE jest kanoniczne
+## Note: what is NOT canonical
 
-`DRAFT.md` oraz cały katalog `test/` to **„brudne" notatki i testy użytkownika** (zadeklarowane
-wprost w nagłówku `DRAFT.md`). Traktuj je jako źródło pomysłów/kontekstu, nie jako specyfikację ani
-zwalidowane wyniki.
+`DRAFT.md` and the entire `test/` directory are the **user's "dirty" notes and tests** (stated
+outright in the `DRAFT.md` header). They are gitignored on `main`. Treat them as a source of ideas /
+context, not as a spec or as validated results.

@@ -1,210 +1,215 @@
-# FINDINGS — praktyczne zastosowania Jimmy'ego
+# FINDINGS — practical uses of Jimmy
 
-Stan na 2026-09-22. Destylat z `CHARACTERIZATION.md` + eksperymentów `001`, `002`.
+As of 2026-09-22. Distilled from `CHARACTERIZATION.md` + experiments `001`, `002`.
 
-## Prawo projektu (potwierdzone 2× niezależnie)
+## The project law (confirmed 2× independently)
 
-> **Wolumen naprawia wariancję, nie bias.**
+> **Volume fixes variance, not bias.**
 
-best-of-N / głosowanie zamienia zawodnego 8B w niezawodne narzędzie **wtedy i tylko wtedy**, gdy
-błędy Jimmy'ego są losowe (rozrzut wokół prawdy) i istnieje tani weryfikator/agregator. Gdy błąd
-jest **systematyczny** (Jimmy konsekwentnie źle rozumie), więcej próbek tylko utrwala złą odpowiedź.
+best-of-N / voting turns an unreliable 8B into a reliable tool **if and only if** Jimmy's errors are
+random (scattered around the truth) and a cheap verifier/aggregator exists. When the error is
+**systematic** (Jimmy consistently misreads), more samples only entrench the wrong answer.
 
-To jest sito do oceny KAŻDEGO przyszłego pomysłu na Jimmy'ego:
-1. Czy istnieje tani deterministyczny weryfikator lub sensowna agregacja? Jeśli nie → odpad.
-2. Czy błędy 8B tu są losowe czy systematyczne? Systematyczne → best-of-N nie pomoże.
+This is the sieve for evaluating EVERY future Jimmy idea:
+1. Is there a cheap deterministic verifier or a sensible aggregation? If not → reject.
+2. Are the 8B errors here random or systematic? Systematic → best-of-N won't help.
 
-### Prawo drugie (003): wolumen pomaga OPTYMALIZACJI, nie EKSPLORACJI
-Próbkowanie Jimmy'ego jest **zpikowane na modach**. Więcej próbek:
-- ✅ dla **optymalizacji** (wybór najlepszego po skalarze / głosowanie) — 001, 002, 003B,
-- ❌ dla **eksploracji** (pokrycie przestrzeni kategorialnej) — 003A: nasycenie na ~18%.
+### Second law (003): volume helps OPTIMIZATION, not EXPLORATION
+Jimmy's sampling is **spiked on modes**. More samples:
+- ✅ for **optimization** (pick the best by a scalar / voting) — 001, 002, 003B,
+- ❌ for **exploration** (covering a categorical space) — 003A: saturation at ~18%.
 
-**Ale (003b):** eksplorację odblokowuje *zewnętrzny akumulujący stan + presja nowości* — pamięć
-"już widziane" wstrzykiwana do promptu podnosi pokrycie z ~18% do **~80%** (3-4× przy równym
-budżecie). To jest zwalidowany mechanizm anti-collapse dla pętli (006).
+**But (003b):** exploration is unlocked by an *external accumulating state + novelty pressure* — a
+"already seen" memory injected into the prompt raises coverage from ~18% to **~80%** (3-4× at equal
+budget). This is the validated anti-collapse mechanism for a loop (006).
 
-### Prawo trzecie (006): pętla ma sens tylko dla AKUMULACJI, nie OPTYMALIZACJI
-Gdy optimum mieści się w JEDNYM wyjściu Jimmy'ego → **best-of-N wygrywa**, pętla ewolucyjna nic nie
-dodaje (006/006b: ewolucja = kontrola). Gdy cel PRZEKRACZA jedno wyjście (struktura większa niż
-generacja) → pętla z akumulującym stanem jest jedynym, co działa (003b). Święty Graal = akumulacja.
-Pełne rozstrzygnięcie i otwarta granica: **`HOLY_GRAIL.md`**.
+### Third law (006): a loop is worth it only for ACCUMULATION, not OPTIMIZATION
+When the optimum fits in a SINGLE Jimmy output → **best-of-N wins**, the evolutionary loop adds
+nothing (006/006b: evolution = control). When the target EXCEEDS one output (a structure larger than a
+generation) → a loop with accumulating state is the only thing that works (003b). The Holy Grail =
+accumulation. Full resolution and open frontier: **`HOLY_GRAIL.md`**.
 
-### Prawo czwarte (004/010/011): kiedy DEKOMPONOWAĆ pracę na kroki
-Intuicja "rozbij na jak najwięcej najprostszych kroków, przetwarzaj niezależnie, potem złóż" jest
-dla Jimmy'ego **zwykle błędna**. Wygrywa tylko w wąskim przypadku:
+### Fourth law (004/010/011): when to DECOMPOSE work into steps
+The intuition "break into as many simplest steps as possible, process independently, then reassemble"
+is **usually wrong** for Jimmy. It wins only in a narrow case:
 
-| Typ zadania | wygrywa | dowód |
-|-------------|---------|-------|
-| Ekstrakcja z **rozłącznych** fragmentów, reduce **deterministyczny** (unia/suma) | **map-reduce** | 004: 0→100% |
-| **Klasyfikacja/gestalt** (temat, sens całości) | **pokaż Jimmy'emu CAŁOŚĆ** (bez etapu map) | 010: 54% per-item → 100% holistycznie |
-| **Synteza sprzężonych części** (kod, tekst) | **best-of-N całości + weryfikator** | 011: dekompozycja 17% < best-of-N 47% |
+| Task type | winner | evidence |
+|-----------|--------|----------|
+| Extraction from **disjoint** fragments, **deterministic** reduce (union/sum) | **map-reduce** | 004: 0→100% |
+| **Classification/gestalt** (topic, meaning of the whole) | **show Jimmy the WHOLE** (no map stage) | 010: 54% per-item → 100% holistic |
+| **Synthesis of coupled parts** (code, text) | **best-of-N of the whole + verifier** | 011: decomposition 17% < best-of-N 47% |
 
-Reguła: dekomponuj TYLKO gdy jednostki są naprawdę niezależne I rekombinacja jest arytmetyczna.
-Gdy zadanie korzysta z kontekstu całości → nie dziel. Gdy wymaga inteligentnego sklejania →
-best-of-N całości + deterministyczny checker (NIE reduce-przez-Jimmy'ego).
-Bonus (010): głupi model jest LEPSZY na agregacie niż na części — klasyfikuj grupy, nie pojedyncze byty.
+Rule: decompose ONLY when the units are genuinely independent AND recombination is arithmetic. When
+the task benefits from the whole context → don't split. When it needs intelligent gluing → best-of-N
+of the whole + a deterministic checker (NOT reduce-by-Jimmy).
+Bonus (010): a dumb model is BETTER on the aggregate than on the part — classify groups, not single
+entities.
 
-**Rozszerzenie (013): gdy reduce MUSI być przez Jimmy'ego (sumaryzacja), sam reduce trzeba pogryźć.**
-Holistyczny reduce nad wieloma sekcjami łamie ograniczenia ilościowe (instruction-following pada na
-dużym wejściu). **Reduce hierarchiczny** (partie → mini-podsumowania → finał, każdy poziom = MAŁE
-wejście) trzyma format (adherence 1.0) i kompresję (42×). Single-shot na wielkim dokumencie CICHO
-obcina (prefill 110 z 15k) — map-reduce konieczny. Twarde ograniczenia w system-prompcie rządzą
-formatem (0.92-1.0 vs 0.0 dla luźnego).
+**Extension (013): when reduce MUST be by Jimmy (summarization), the reduce itself must be chunked.**
+A holistic reduce over many sections breaks the quantitative constraints (instruction-following
+collapses on large input). **Hierarchical reduce** (batches → mini-summaries → final, each level =
+SMALL input) holds format (adherence 1.0) and compression (42×). Single-shot on a large document
+SILENTLY truncates (prefill 110 of 15k) — map-reduce is required. Hard constraints in the system
+prompt govern format (0.92-1.0 vs 0.0 for a loose one).
 
-### Prawo piąte (012): kontekst — RELEWANCJA bije ROZMIAR
-"Duży input → mały output" (dorzuć całą dokumentację) jest **odwrotnością** tego, co działa:
-- dump całości `man bash` (~98k tok, 16× limit) lub nawet 10k tok → **0%** (nad limitem niszczy output),
-- generyczny dump w budżecie (4k tok) → ledwo +11 pkt (rozcieńcza sygnał),
-- **mały CELNY cheatsheet (~160 tok) → +55 pkt (39%→94%)**.
+### Fifth law (012): context — RELEVANCE beats SIZE
+"Big input → small output" (dump the whole documentation) is the **inverse** of what works:
+- dumping all of `man bash` (~98k tok, 16× the limit) or even 10k tok → **0%** (over the limit
+  destroys the output),
+- a generic dump within budget (4k tok) → barely +11 pts (dilutes the signal),
+- **a small TARGETED cheatsheet (~160 tok) → +55 pts (39%→94%)**.
 
-Błędy Jimmy'ego to często **luki wiedzy**, nie brak rozumowania — wstrzyknięcie DOKŁADNIE właściwego
-małego fragmentu je zasypuje. Reguła: **minimal relevant input**, nie big input. Inwestuj w retrieval
-właściwego snippetu (wysoki S/N, grubo pod ~6k), nie w rozmiar kontekstu.
+Jimmy's errors are often **knowledge gaps**, not a lack of reasoning — injecting EXACTLY the right
+small fragment buries them. Rule: **minimal relevant input**, not big input. Invest in retrieving the
+right snippet (high S/N, well under ~6k), not in context size.
 
-### Prawo szóste (014): mechanika → deterministyczny kod, semantyka → Jimmy
-Do zadań na HTML/danych, które są **mechanicznie specyfikowalne** (ekstrakcja linków, strip tagów,
-keyword-grep, parsowanie struktury) → używaj **regex/parser/grep**: perfekcyjne, natychmiastowe,
-darmowe. Jimmy jest tu ściśle GORSZY (014: links F=0.64, strip F1=0.68, keyword F=0.69 vs 1.0).
-Jimmy dodaje wartość TYLKO dla **semantyki bez deterministycznego odpowiednika** (filtr tematyczny
-F=0.94, opis treści, tagowanie). **Wzorzec pipeline'u:** parser robi mechanikę, Jimmy dostaje tylko
-podzadania semantyczne na oczyszczonym już tekście. Nie każ Jimmy'emu robić tego, co regex robi lepiej.
+### Sixth law (014): mechanics → deterministic code, semantics → Jimmy
+For HTML/data tasks that are **mechanically specifiable** (link extraction, tag stripping,
+keyword-grep, structure parsing) → use a **regex/parser/grep**: perfect, instant, free. Jimmy is
+strictly WORSE here (014: links F=0.64, strip F1=0.68, keyword F=0.69 vs 1.0). Jimmy adds value ONLY
+for **semantics with no deterministic equivalent** (topic filter F=0.94, content description,
+tagging). **Pipeline pattern:** the parser does the mechanics, Jimmy gets only the semantic subtasks
+on already-cleaned text. Don't make Jimmy do what a regex does better.
 
-### Prawo dziewiąte (019): zdolności logiczne warstwowe + oceniaj balanced accuracy
-Jimmy: logika zdaniowa (L0) solidna (bal_acc 0.88), ale od kwantyfikatorów/wyższych rzędów (L1-L5)
-zapada do near-chance (0.62-0.75) z uporczywym biasem TRUE. Głosowanie nie ratuje (bias, nie wariancja).
-**Metodologia:** dla KAŻDEGO binarnego zadania raportuj balanced accuracy + class-balance + odpowiedź-rate —
-inaczej nierównowaga gold + bias modelu udają kompetencję (pierwszy bieg 019: L4 gold 6T/0F → stałe TRUE
-„=1.00"). Praktyka: ufaj Jimmy'emu w prostej boolowskiej (z weryfikacją), nie w rozumowaniu kwantyfikatorowym.
+### Ninth law (019): logical ability is layered + judge by balanced accuracy
+Jimmy: propositional logic (L0) solid (bal_acc 0.88), but from quantifiers/higher orders (L1-L5) it
+collapses to near-chance (0.62-0.75) with a persistent TRUE bias. Voting doesn't rescue it (bias, not
+variance). **Methodology:** for EVERY binary task report balanced accuracy + class-balance +
+answer-rate — otherwise gold imbalance + model bias masquerade as competence (first 019 run: L4 gold
+6T/0F → constant TRUE "=1.00"). Practice: trust Jimmy on simple boolean logic (with verification), not
+on quantifier reasoning.
 
-### Prawo ósme (018): pośrednicz osąd przez wierny OPIS — nie pytaj wprost „czy pasuje?"
-Bezpośredni Jimmy-sędzia „czy komenda pasuje do zadania?" RUBBER-STAMPUJE (018 T2: mismatch-recall 0.08,
-uznaje wszystko za MATCH — bias pozytywny, głosowanie nie pomaga). ALE ta sama ocena przepuszczona przez
-wierny OPIS (018 T3: „opisz co robi komenda" → „porównaj zadanie z opisem") wykrywa 100% niedopasowań
-(acc 0.54→0.83, +30 pkt). Bo opisywanie to recall wiedzy, który Jimmy robi WIERNIE (T1 faithful 1.0), a
-porównanie dwóch opisów omija bias sędziego. Technika: **describe→compare zamiast direct-judge**.
-Niuansuje Prawo 7: Jimmy to zły DIREKTNY sędzia, ale DOBRY komparator opisów.
+### Eighth law (018): mediate judgment through a faithful DESCRIPTION — don't ask "does it match?" directly
+A direct Jimmy-judge "does the command match the task?" RUBBER-STAMPS (018 T2: mismatch-recall 0.08,
+calls everything a MATCH — positive bias, voting doesn't help). BUT the same judgment passed through a
+faithful DESCRIPTION (018 T3: "describe what the command does" → "compare the task with the
+description") detects 100% of mismatches (acc 0.54→0.83, +30 pts). Because describing is knowledge
+recall, which Jimmy does FAITHFULLY (T1 faithful 1.0), and comparing two descriptions sidesteps the
+judge's bias. Technique: **describe→compare instead of direct-judge**. It nuances Law 7: Jimmy is a
+bad DIRECT judge but a good DESCRIPTION comparator.
 
-### Prawo siódme (015): Jimmy = PROPOSER, nigdy EVALUATOR/DISPOSER/architekt
-Jimmy nie potrafi zaprojektować działającej pętli problem-solvingu (meta-prompting). Wygenerowane
-scaffoldy: structural rate 60%, funkcjonalnie fitness 0 vs deterministyczny sufit 8.88. Root cause:
-(a) proposer łamie własne ograniczenia (przykład 14 słów przy limicie 12), (b) evaluator napisany jak
-zapieczona ODPOWIEDŹ, nie ogólna INSTRUKCJA, ocenia "vibes" nie prawdziwe kryterium. Nawet HUMAN
-scaffold (2.38) ≪ deterministyczna selekcja (8.88) — **wąskim gardłem jest evaluator; soft-evaluator
-(Jimmy lub człowiek) nie śledzi prawdy**. Reguła: w pętli propose/evaluate/dispose Jimmy pełni TYLKO
-rolę PROPOSERA (generator różnorodności); EVALUATOR i DISPOSER muszą być deterministyczne. To znów
-kanoniczny przepis: best-of-N (Jimmy proponuje) + deterministyczny weryfikator (nie Jimmy ocenia).
+### Seventh law (015): Jimmy = PROPOSER, never EVALUATOR/DISPOSER/architect
+Jimmy cannot design a working problem-solving loop (meta-prompting). Generated scaffolds: structural
+rate 60%, functionally fitness 0 vs a deterministic ceiling of 8.88. Root cause: (a) the proposer
+breaks its own constraints (a 14-word example at a 12-word limit), (b) the evaluator is written like a
+baked-in ANSWER, not a general INSTRUCTION, and grades "vibes" not a real criterion. Even a HUMAN
+scaffold (2.38) ≪ deterministic selection (8.88) — **the bottleneck is the evaluator; a soft
+evaluator (Jimmy or human) doesn't track truth**. Rule: in a propose/evaluate/dispose loop Jimmy plays
+ONLY the PROPOSER role (diversity generator); the EVALUATOR and DISPOSER must be deterministic. Again
+the canonical recipe: best-of-N (Jimmy proposes) + deterministic verifier (Jimmy doesn't judge).
 
-### Prawo dziesiąte (022): Jimmy generuje użyteczne dane treningowe; wiążą DWA deficyty — pokrycie ORAZ wierność etykiet
-Downstream (AG News 4-klasy, ten sam klasyfikator na danych z różnych źródeł, macro-F1 na prawdziwym
-gold test, N=400 dopasowane). **KEEP jako generator danych treningowych** dla tych studentów:
-- **Student NB (bag-of-words), floor=majority:** Jimmy-IID domyka lukę floor→REAL w **0.74**.
-- **Student ICL, floor=ZERO-SHOT** (uczciwy floor — Jimmy już umie klasyfikować newsy, zero-shot
-  F1 0.517; majority zawyżałby G): egzemplarze Jimmy'ego realnie pomagają (wszystkie >zero-shot o
-  >3 SE, G IID 0.70 / NOVELTY 0.93), ALE trzy źródła (REAL/IID/NOVELTY) są **nierozróżnialne między
-  sobą** (SE≈0.033/160 itemów; IID vs NOVELTY = 1.4 SE). Pomoc największa na najtrudniejszej klasie
-  Sci/Tech (zero-shot recall 0.0).
+### Tenth law (022): Jimmy generates useful training data; two deficits bind — coverage AND label fidelity
+Downstream (AG News 4-class, the same classifier on data from different sources, macro-F1 on the real
+gold test, N=400 matched). **KEEP as a training-data generator** for these students:
+- **Student NB (bag-of-words), floor=majority:** Jimmy-IID closes the floor→REAL gap by **0.74**.
+- **Student ICL, floor=ZERO-SHOT** (an honest floor — Jimmy already knows how to classify news,
+  zero-shot F1 0.517; majority would inflate G): Jimmy exemplars genuinely help (all >zero-shot by
+  >3 SE, G IID 0.70 / NOVELTY 0.93), BUT the three sources (REAL/IID/NOVELTY) are **mutually
+  indistinguishable** (SE≈0.033/160 items; IID vs NOVELTY = 1.4 SE). The help is largest on the
+  hardest class Sci/Tech (zero-shot recall 0.0).
 
-Cztery niuanse:
-- **Dwa realne deficyty puli Jimmy vs REAL przy równym N:** (a) **pokrycie leksykalne** — vocab REAL
-  4583 vs IID 2142 vs NOVELTY 1998 (<½ słownika; NB ignoruje OOV → wprost zasila lukę); (b)
-  **wierność etykiet** — self-check forced-4way 0.83/0.74, style-gap agreement 0.94/0.83. Oba wiążą.
-- **`distinct_rate` to zły przyrząd na kolaps** dla generowanej prozy (≈1.0 z konstrukcji; próg 0.90
-  nie mógł się odpalić). Kolaps na poziomie dokumentu nie wystąpił, ale na poziomie SŁOWNIKA — tak.
-- **Presja nowości (003b) tu SZKODZI i przegrywa na SWOIM celu:** u NB 0.617→0.429; NOVELTY gorszy
-  na OBU osiach — nie kupił nawet pokrycia (vocab 1998 < IID 2142), a stracił wierność. 003b działa
-  dla przestrzeni ENUMEROWALNEJ z TWARDYM checkerem; klasa semantyczna nim nie jest. Mechanizm
-  skonfundowany: nowość implementowana przez wstrzykiwanie pamięci → dryf etykiet + degradacja
-  długim kontekstem (urwane próbki).
-- **Wartość interwencji zależy od studenta:** bag-of-words wrażliwy na szum etykiet i pokrycie; ICL
-  (k=8) toleruje. Ten sam zbiór, różny werdykt. Tani proxy jakości: model-REAL→pula Jimmy
-  (style-gap agreement) przewidział ranking bez sędziego-Jimmy'ego.
-Przepis: IID + dedup (n-gram Jaccard) + opcjonalny filtr forced-4-way; osobno zwiększać pokrycie
-leksykalne. **OTWARTE:** dane SFT dla dostrajanego LM (nietestowane; torch dostępny).
+Four nuances:
+- **Two real deficits of the Jimmy pool vs REAL at equal N:** (a) **lexical coverage** — vocab REAL
+  4583 vs IID 2142 vs NOVELTY 1998 (<½ the vocabulary; NB ignores OOV → this directly feeds the gap);
+  (b) **label fidelity** — self-check forced-4way 0.83/0.74, style-gap agreement 0.94/0.83. Both bind.
+- **`distinct_rate` is a bad instrument for collapse** on generated prose (≈1.0 by construction; the
+  0.90 threshold could never fire). Document-level collapse didn't occur, but VOCABULARY-level did.
+- **Novelty pressure (003b) HURTS here and loses on ITS OWN goal:** on NB 0.617→0.429; NOVELTY worse
+  on BOTH axes — it didn't even buy coverage (vocab 1998 < IID 2142) and lost fidelity. 003b works for
+  an ENUMERABLE space with a HARD checker; a semantic class is not one. Confounded mechanism: novelty
+  implemented via memory injection → label drift + long-context degradation (truncated samples).
+- **The value of the intervention depends on the student:** bag-of-words is sensitive to label noise
+  and coverage; ICL (k=8) tolerates it. Same set, different verdict. A cheap quality proxy:
+  model-REAL→Jimmy-pool (style-gap agreement) predicted the ranking without a Jimmy judge.
+Recipe: IID + dedup (n-gram Jaccard) + optional forced-4-way filter; separately increase lexical
+coverage. **OPEN:** SFT data for a fine-tuned LM (untested; torch available).
 
-## Portfolio zastosowań
+## Applications portfolio
 
-### ✅ Potwierdzone (KEEP) — działają niezawodnie
-| Zastosowanie | Dowód | Wzorzec |
-|--------------|-------|---------|
-| **Self-consistency na zadaniach weryfikowalnych** (arytmetyka, liczby, fakty z agregacją) | 001: 64%→92% @ vote-21..31 | `sample_n(15-21) → majority_vote` |
-| **Kuloodporna emisja JSON wg schematu** (tekst→struktura) | 002: 100% validity @ best-of-8, **powtórzone 2×** | `sample_n(8) → filter(validate) → pierwszy walidny` |
-| **Klasyfikacja na rozłącznych, dobrze zdefiniowanych kategoriach** | 002: 91.7% / 100% (2 runy), podzbiór jednoznaczny | `sample_n(8) → majority_vote(intent)` |
-| **Generacja kandydatów + selektor po skalarze** (optymalizacja) | 003B: −26.9% objektywu, best-of-20 | `sample_n(N) → scorer → argmin/argmax` |
-| **Eksploracja przestrzeni z pamięcią zewnętrzną** (anti-mode, przestrzeń enumerowalna) | 003b: 18%→~80% pokrycia, 3-4× | pętla: `seen` + prompt "nie: [seen]" |
-| **Przetwarzanie długich dokumentów przez map-reduce** (APLIKACJA) | 004: recall 0.00→**1.00** na dok 2.6× limitu | `chunk(≤1.2k) → map ekstrakcja → reduce unia` |
-| **Jimmy jako reguła CA → emergentny porządek globalny** | 009b: szachownica antyferromagnetyczna, ściśle topologiczna | siatka + reguła voter/konsensus, aktualizacja synchroniczna |
-| **Pisanie kodu (bash): celny cheatsheet + best-of-N + wykonanie** | 011: best-of-N 47%; 012: **+cheatsheet → 94%** | `RAG(mały snippet) + sample_n(k) → uruchom → pass` |
-| **Wypełnianie luk wiedzy celnym mini-kontekstem** (RAG) | 012: +55 pkt z ~160 tok relewantnych | wstrzyknij DOKŁADNY fragment, grubo pod 6k |
-| **Klasyfikacja holistyczna grup** (folder/zbiór, nie pojedynczy byt) | 010: 54% per-plik → **100%** per-folder | pokaż Jimmy'emu całą grupę naraz |
-| **Hierarchiczna sumaryzacja wielkiego dokumentu** | 013: adherence 1.0, kompresja 42×, faith 0.9 | `chunk → map(twardy prompt) → reduce HIERARCHICZNY` |
-| **Transformacja dokumentu → format** (ArchWiki→manpage) | 020: renders 0-warnings, faith 0.86, man-compatible | Jimmy=treść, Python=troff; strip→chunk→map→reduce |
-| **manpage → tldr** (bogate manpage'y + precyzyjny prompt) | 021: tar renderuje w prawdziwym tldr, faith 1.0 | Jimmy=treść (prompt: "najczęstsze realne użycia"), Python=format; NIESTABILNE per-komenda |
-| **Semantyczne operacje na HTML/tekście** (filtr tematyczny, opis, tagowanie) | 014: topic-filter F=0.94 | parser→mechanika, Jimmy→tylko semantyka |
-| **Defensywne planowanie kroków** ("nie zakładaj nic, weryfikuj precond./sukces") | 016: defensive-ratio 0.90 vs 0.54 plain (+35 pkt) | defensywny system-prompt + płytka bounded dekompozycja |
-| **Generowanie komend shell per krok** (forma) | 017: best-of-N valid 1.0, real 1.0, runnable 0.96 | `sample_n → filtr: bash -n ∧ real ∧ exec(read-only)` |
-| **Logika zdaniowa L0** (tautologie, ewaluacja, entailment) | 019: balanced acc 0.88, bez biasu | best-of-N + głosowanie |
-| **Opis/wyjaśnianie komend** (recall wiedzy) | 018 T1: faithful 1.0, recall 0.68 | jedno zdanie, best-of-N |
-| **Weryfikacja dopasowania przez opis** (describe→compare) | 018 T3: acc 0.83, mismatch-recall 1.0 | opisz komendę → porównaj z zadaniem |
-| **Generowanie alternatywnych komend** (różnorodność) | 018 T4: diverse 1.0, valid 1.0, equiv 0.58 | best-of-N + sprawdź równoważność wyjścia |
-| **Generowanie danych treningowych** (klasyfikacja tematyczna) | 022: IID domyka lukę G=0.74 (NB, floor=majority) / 0.70 (ICL, floor=zero-shot) na gold AG News | IID per-klasa + dedup + filtr forced-4-way; NIE presja nowości |
-| **Deterministyczna, cache'owalna funkcja** (topK=1) | Faza 0: identyczne bajty | memoizacja lokalna |
-| **Masowa równoległa transformacja** (~38 req/s, conc=8; sustained 57 rps/0 błędów) | Faza 0 + sustained.py | pula async z klienta |
+### ✅ Confirmed (KEEP) — reliably working
+| Application | Evidence | Pattern |
+|-------------|----------|---------|
+| **Self-consistency on verifiable tasks** (arithmetic, numbers, facts with aggregation) | 001: 64%→92% @ vote-21..31 | `sample_n(15-21) → majority_vote` |
+| **Bulletproof schema-conformant JSON emission** (text→structure) | 002: 100% validity @ best-of-8, **repeated 2×** | `sample_n(8) → filter(validate) → first valid` |
+| **Classification on disjoint, well-defined categories** | 002: 91.7% / 100% (2 runs), unambiguous subset | `sample_n(8) → majority_vote(intent)` |
+| **Candidate generation + scalar selector** (optimization) | 003B: −26.9% of the objective, best-of-20 | `sample_n(N) → scorer → argmin/argmax` |
+| **Space exploration with external memory** (anti-mode, enumerable space) | 003b: 18%→~80% coverage, 3-4× | loop: `seen` + prompt "not: [seen]" |
+| **Long-document processing via map-reduce** (APPLICATION) | 004: recall 0.00→**1.00** on a doc 2.6× the limit | `chunk(≤1.2k) → map extraction → reduce union` |
+| **Jimmy as a CA rule → emergent global order** | 009b: antiferromagnetic checkerboard, strictly topological | grid + voter/consensus rule, synchronous update |
+| **Writing code (bash): targeted cheatsheet + best-of-N + execution** | 011: best-of-N 47%; 012: **+cheatsheet → 94%** | `RAG(small snippet) + sample_n(k) → run → pass` |
+| **Filling knowledge gaps with a targeted mini-context** (RAG) | 012: +55 pts from ~160 relevant tok | inject the EXACT fragment, well under 6k |
+| **Holistic classification of groups** (folder/set, not a single entity) | 010: 54% per-file → **100%** per-folder | show Jimmy the whole group at once |
+| **Hierarchical summarization of a huge document** | 013: adherence 1.0, compression 42×, faith 0.9 | `chunk → map(hard prompt) → HIERARCHICAL reduce` |
+| **Document → format transformation** (ArchWiki→manpage) | 020: renders 0-warnings, faith 0.86, man-compatible | Jimmy=content, Python=troff; strip→chunk→map→reduce |
+| **manpage → tldr** (rich manpages + a precise prompt) | 021: tar renders in real tldr, faith 1.0 | Jimmy=content (prompt: "most common real uses"), Python=format; UNSTABLE per-command |
+| **Semantic operations on HTML/text** (topic filter, description, tagging) | 014: topic-filter F=0.94 | parser→mechanics, Jimmy→semantics only |
+| **Defensive step planning** ("assume nothing, verify preconds/success") | 016: defensive-ratio 0.90 vs 0.54 plain (+35 pts) | defensive system prompt + shallow bounded decomposition |
+| **Generating shell commands per step** (form) | 017: best-of-N valid 1.0, real 1.0, runnable 0.96 | `sample_n → filter: bash -n ∧ real ∧ exec(read-only)` |
+| **Propositional logic L0** (tautologies, evaluation, entailment) | 019: balanced acc 0.88, no bias | best-of-N + voting |
+| **Describing/explaining commands** (knowledge recall) | 018 T1: faithful 1.0, recall 0.68 | one sentence, best-of-N |
+| **Match verification via description** (describe→compare) | 018 T3: acc 0.83, mismatch-recall 1.0 | describe the command → compare with the task |
+| **Generating alternative commands** (diversity) | 018 T4: diverse 1.0, valid 1.0, equiv 0.58 | best-of-N + check output equivalence |
+| **Generating training data** (topic classification) | 022: IID closes gap G=0.74 (NB, floor=majority) / 0.70 (ICL, floor=zero-shot) on gold AG News | IID per-class + dedup + forced-4-way filter; NOT novelty pressure |
+| **Deterministic, cacheable function** (topK=1) | Phase 0: identical bytes | local memoization |
+| **Massive parallel transformation** (~38 req/s, conc=8; sustained 57 rps/0 errors) | Phase 0 + sustained.py | async pool from the client |
 
-### ❌ Odrzucone / ograniczone (DISPOSE)
-| Pomysł | Powód | Liczba |
-|--------|-------|--------|
-| Jimmy jako **arbiter** na nakładającej się/spornej taksonomii | tam ludzki gold też sporny; głosowanie utrwala jeden z rozsądnych wyborów | 002: 37.5% na podzbiorze dyskusyjnym (stabilne 2×) |
-| **Naiwne** pokrycie przestrzeni samym wolumenem (bez pamięci) | mode-collapse: próbki pikują na kilku ulubieńcach | 003A: nasycenie ~18% (naprawione w 003b pamięcią → ~80%) |
-| Sterowanie długością/stopem przez API (`max_tokens`, `stop`) | parametry ignorowane | Faza 0 |
-| Wybór mocniejszego modelu (`70B`, itp.) | `selectedModel` ignorowany, jest jeden 8B | Faza 0 |
-| Długi kontekst (>6-8k tok) / duży map bez chunkowania | pusta odpowiedź + spadek instruction-following | Faza 0 |
-| **Otwarta akumulacja / open-ended inwencja** z miękkim checkerem | nasyca się (mody fonotaktyczne + echo okna + dziura bramki) | 007: accept-rate 0.22→0.06 |
-| **Pętla krytyka** (generator↔krytyk) jako optymalizacja | krytyk dzieli bias, czasem psuje; best-of-N o równym budżecie wygrywa | 008: 4.01 vs 4.58 |
-| **Dekompozycja na kroki + reduce-przez-Jimmy'ego** (codegen) | reduktor nie sklei sprzężonych/niespójnych snippetów; planowanie nie winne (C1=C2) | 011: 17% vs best-of-N 47% |
-| **Dekompozycja klasyfikacji na per-item map + reduce** | etap map wyrzuca kontekst i wstrzykuje szum | 010: 54% vs 100% holistycznie |
-| **"Duży input": dump całej dokumentacji do promptu** | nad limitem → 0%; generyczny dump w budżecie rozcieńcza (ledwo +11) | 012: over-limit 0%, man4k +11 vs cheatsheet +55 |
-| **Mechaniczna ekstrakcja z HTML** (linki, strip, keyword) przez Jimmy'ego | regex/parser/grep perfekcyjne+darmowe; Jimmy gorszy | 014: F 0.64-0.69 vs 1.0 |
-| **Jimmy jako architekt scaffoldu / soft-evaluator** (meta-prompting) | myli instrukcję z przykładem, ocenia vibes; fitness 0 vs det 8.88 | 015: structural 60%, exec 0 |
-| **Głęboka rekursja do „warstwy atomowej"** | Jimmy nie osądza atomowości (nigdy ATOMIC), eksplozja + redundancja międzygałęziowa | 016: 299 liści, cap, ~20% dup |
-| **Unattended wykonywanie komend Jimmy'ego** | ~20% działa-ale-błędne; emituje destrukcję (`init 6` reboot) | 017: semantyka 0.79, exec 0.96 |
-| **Jimmy jako bezpośredni sędzia „czy X pasuje do Y?"** | rubber-stamp / bias pozytywny; uznaje wszystko za MATCH | 018 T2: mismatch-recall 0.08 (użyj describe→compare) |
-| **Rozumowanie kwantyfikatorowe / wyższego rzędu** (L1+) | near-chance, bias TRUE; głosowanie nie ratuje | 019: bal_acc 0.62-0.75 (vs L0 0.88) |
-| **Jimmy-CA → domeny przestrzenne** (klastry ferromagnetyczne) | reguła uśredniająca dyfunduje; voter daje anty-porządek nie domeny | 009: Δsim≈−0.1 |
-| **Presja nowości (003b, wstrzykiwanie pamięci) do generacji danych treningowych** | brak twardego checkera klasy → dryf etykiet + degradacja długim kontekstem; przegrywa na SWOIM celu (vocab 1998 < IID 2142 — nie kupił pokrycia) | 022: NB 0.617→0.429 (G 0.74→0.47) |
+### ❌ Rejected / limited (DISPOSE)
+| Idea | Reason | Number |
+|------|--------|--------|
+| Jimmy as **arbiter** on an overlapping/contested taxonomy | there even the human gold is contested; voting entrenches one of the reasonable choices | 002: 37.5% on the debatable subset (stable 2×) |
+| **Naive** space coverage by volume alone (no memory) | mode-collapse: samples spike on a few favorites | 003A: saturation ~18% (fixed in 003b with memory → ~80%) |
+| Length/stop control via the API (`max_tokens`, `stop`) | parameters ignored | Phase 0 |
+| Selecting a stronger model (`70B`, etc.) | `selectedModel` ignored, there is one 8B | Phase 0 |
+| Long context (>6-8k tok) / big map without chunking | empty reply + instruction-following drop | Phase 0 |
+| **Open-ended accumulation / open invention** with a soft checker | saturates (phonotactic modes + window echo + gate hole) | 007: accept-rate 0.22→0.06 |
+| **Critic loop** (generator↔critic) as optimization | the critic shares the bias, sometimes breaks things; best-of-N at equal budget wins | 008: 4.01 vs 4.58 |
+| **Decomposition into steps + reduce-by-Jimmy** (codegen) | the reducer can't glue coupled/inconsistent snippets; planning not to blame (C1=C2) | 011: 17% vs best-of-N 47% |
+| **Decomposing classification into per-item map + reduce** | the map stage throws away context and injects noise | 010: 54% vs 100% holistic |
+| **"Big input": dump all the documentation into the prompt** | over the limit → 0%; a generic in-budget dump dilutes (barely +11) | 012: over-limit 0%, man4k +11 vs cheatsheet +55 |
+| **Mechanical HTML extraction** (links, strip, keyword) via Jimmy | regex/parser/grep perfect+free; Jimmy worse | 014: F 0.64-0.69 vs 1.0 |
+| **Jimmy as a scaffold architect / soft-evaluator** (meta-prompting) | confuses instruction with example, grades vibes; fitness 0 vs det 8.88 | 015: structural 60%, exec 0 |
+| **Deep recursion to an "atomic layer"** | Jimmy doesn't judge atomicity (never says ATOMIC), explosion + cross-branch redundancy | 016: 299 leaves, cap, ~20% dup |
+| **Unattended execution of Jimmy's commands** | ~20% works-but-wrong; emits destruction (`init 6` reboot) | 017: semantics 0.79, exec 0.96 |
+| **Jimmy as a direct judge "does X match Y?"** | rubber-stamp / positive bias; calls everything a MATCH | 018 T2: mismatch-recall 0.08 (use describe→compare) |
+| **Quantifier / higher-order reasoning** (L1+) | near-chance, TRUE bias; voting doesn't rescue | 019: bal_acc 0.62-0.75 (vs L0 0.88) |
+| **Jimmy-CA → spatial domains** (ferromagnetic clusters) | an averaging rule diffuses; voter gives anti-order not domains | 009: Δsim≈−0.1 |
+| **Novelty pressure (003b, memory injection) for training-data generation** | no hard class checker → label drift + long-context degradation; loses on ITS OWN goal (vocab 1998 < IID 2142 — didn't buy coverage) | 022: NB 0.617→0.429 (G 0.74→0.47) |
 
-> **Korekta 002:** globalne "70% intent-acc" było mylące — mianownik zawierał moje własne sporne
-> etykiety. Po rozdzieleniu: jednoznaczne ≈92-100%, sporne 37.5%. Właściwy wniosek to nie "bias",
-> lecz "Jimmy radzi sobie z czystymi kategoriami; granicą jest niedookreślenie taksonomii".
+> **Correction to 002:** the global "70% intent-acc" was misleading — the denominator included my own
+> contested labels. After splitting: unambiguous ≈92-100%, contested 37.5%. The right conclusion isn't
+> "bias" but "Jimmy handles clean categories; the boundary is taxonomy underspecification".
 
-## Roadmap (następne hipotezy do przetestowania)
-- ✅ **003 — generacja kandydatów** (ZROBIONE): B (selekcja) KEEP, A (pokrycie) DISPOSE,
-  003b (anti-mode z pamięcią) KEEP — mechanizm anti-collapse zwalidowany.
-- ✅ **006 + 006b — Święty Graal jako GA** (ZROBIONE): **DISPOSE** emergencji-jako-optymalizacji.
-  best-of-N o równym budżecie nie do pobicia przez ewolucję (A=D). Rozstrzygnięcie: **Graal =
-  akumulacja, nie optymalizacja** — patrz `HOLY_GRAIL.md`. Otwarta granica: przestrzeń otwarta + miękki checker.
-- ✅ **004 — map-reduce po dokumencie** (ZROBIONE): **KEEP**, recall 0.00→1.00 na dok 2.6× limitu.
-- ✅ **007 — otwarta akumulacja, miękki checker** (ZROBIONE): **DISPOSE** — nasyca się (accept 0.22→0.06);
-  odpowiedź na granicę Graala: akumulacja = recall enumerowalny, nie otwarta inwencja.
-- ✅ **008 — agenci asymetryczni (generator↔krytyk)** (ZROBIONE): **DISPOSE** — best-of-N wygrywa (4.58 vs 4.01).
-- ✅ **009 + 009b — Jimmy jako reguła CA** (ZROBIONE): **EMERGENCJA** (009b: szachownica antyferromagnetyczna,
-  topologicznie zależna); 009 (blend) → kolaps semantyczny samoreferencyjny.
-- ✅ **011 — codegen bash (dekompozycja vs monolit)** (ZROBIONE): **DISPOSE** dekompozycji;
-  best-of-N + wykonanie wygrywa (47% vs 17%). Planowanie nie winne (C1=C2).
-- ✅ **010 — drzewo FS map-reduce** (ZROBIONE): odkrycie — dla klasyfikacji holistycznej NIE
-  dekomponuj (54% per-item → 100% całość). Domyka Prawo czwarte.
-- **005 — pipeline złożony:** Jimmy (ekstrakcja JSON, 100%) → deterministyczna logika → Jimmy (render). *(niewykonane)*
-- **Następne otwarte wątki:** 009c (reguła reakcja-dyfuzja z hamowaniem → wzorce Turinga?);
-  007b (twardszy checker: embeddingi + filtr degeneracji — czy otwarta akumulacja ruszy?);
-  008b (asymetryczni agenci na zadaniu NIE-optymalizacyjnym: dialog/negocjacja jako artefakt).
-- **Święty Graal:** pętla z anti-collapse. Klocki gotowe: selektor po skalarze (003B),
-  **pamięć zewnętrzna + presja nowości jako anti-collapse (003b, zwalidowane empirycznie)**.
-  Trzy dozwolone źródła emergencji: (a) selekcja+fitness (Jimmy = operator mutacji, 14k t/s =
-  tysiące generacji), (b) akumulujący stan zewnętrzny (świat: plik/graf/siatka), (c) asymetryczni
-  agenci (różne system-prompty + reguły interakcji). Wymóg: jawny mechanizm anti-collapse +
-  raportowana metryka różnorodności w czasie, nie same transkrypty.
-  - ✅ **Warunek wstępny (obciążenie ciągłe) SPEŁNIONY:** 800 req ciągłych conc=8 = **0 błędów**,
-    57.5 rps, latencja stabilna (dryf −8%). `sustained.py`. conc=8 bezpieczne dla trwałej pętli.
+## Roadmap (next hypotheses to test)
+- ✅ **003 — candidate generation** (DONE): B (selection) KEEP, A (coverage) DISPOSE,
+  003b (anti-mode with memory) KEEP — the anti-collapse mechanism is validated.
+- ✅ **006 + 006b — the Holy Grail as a GA** (DONE): **DISPOSE** of emergence-as-optimization.
+  best-of-N at equal budget can't be beaten by evolution (A=D). Resolution: **Grail = accumulation,
+  not optimization** — see `HOLY_GRAIL.md`. Open frontier: open space + soft checker.
+- ✅ **004 — map-reduce over a document** (DONE): **KEEP**, recall 0.00→1.00 on a doc 2.6× the limit.
+- ✅ **007 — open accumulation, soft checker** (DONE): **DISPOSE** — saturates (accept 0.22→0.06);
+  answers the Grail frontier: accumulation = enumerable recall, not open invention.
+- ✅ **008 — asymmetric agents (generator↔critic)** (DONE): **DISPOSE** — best-of-N wins (4.58 vs 4.01).
+- ✅ **009 + 009b — Jimmy as a CA rule** (DONE): **EMERGENCE** (009b: antiferromagnetic checkerboard,
+  topology-dependent); 009 (blend) → self-referential semantic collapse.
+- ✅ **011 — bash codegen (decomposition vs monolith)** (DONE): **DISPOSE** of decomposition;
+  best-of-N + execution wins (47% vs 17%). Planning not to blame (C1=C2).
+- ✅ **010 — FS-tree map-reduce** (DONE): finding — for holistic classification DON'T decompose
+  (54% per-item → 100% whole). Completes the fourth law.
+- **005 — a composite pipeline:** Jimmy (JSON extraction, 100%) → deterministic logic → Jimmy
+  (render). *(not done)*
+- **Next open threads:** 009c (reaction-diffusion rule with inhibition → Turing patterns?);
+  007b (a harder checker: embeddings + degeneration filter — will open accumulation move?);
+  008b (asymmetric agents on a NON-optimization task: dialogue/negotiation as an artifact).
+- **The Holy Grail:** a loop with anti-collapse. The building blocks are ready: scalar selector
+  (003B), **external memory + novelty pressure as anti-collapse (003b, empirically validated)**.
+  Three permitted sources of emergence: (a) selection+fitness (Jimmy = mutation operator, 14k t/s =
+  thousands of generations), (b) accumulating external state (a world: file/graph/grid), (c)
+  asymmetric agents (different system prompts + interaction rules). Requirement: an explicit
+  anti-collapse mechanism + a reported diversity-over-time metric, not just transcripts.
+  - ✅ **Precondition (sustained load) MET:** 800 sustained requests at conc=8 = **0 errors**,
+    57.5 rps, stable latency (drift −8%). `sustained.py`. conc=8 is safe for a persistent loop.
 
-## Jak dołożyć eksperyment
-`experiments/NNN-slug/` z `hypothesis.md` (hipoteza + metryka + **próg** przed uruchomieniem),
-`run.py` (produkuje liczbę), `verdict.md` (KEEP/DISPOSE + liczba, która zdecydowała). Wpis do `LOG.md`.
+## How to add an experiment
+`experiments/NNN-slug/` with `hypothesis.md` (hypothesis + metric + **threshold** before running),
+`run.py` (produces a number), `verdict.md` (KEEP/DISPOSE + the number that decided it). Add an entry
+to `LOG.md`.
